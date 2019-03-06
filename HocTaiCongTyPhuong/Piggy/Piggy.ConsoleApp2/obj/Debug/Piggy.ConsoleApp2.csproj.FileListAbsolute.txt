@@ -1,0 +1,6 @@
+F:\GitHub\CN5\HocTaiCongTyPhuong\Piggy\Piggy.ConsoleApp2\bin\Debug\Piggy.ConsoleApp2.exe.config
+F:\GitHub\CN5\HocTaiCongTyPhuong\Piggy\Piggy.ConsoleApp2\bin\Debug\Piggy.ConsoleApp2.exe
+F:\GitHub\CN5\HocTaiCongTyPhuong\Piggy\Piggy.ConsoleApp2\bin\Debug\Piggy.ConsoleApp2.pdb
+F:\GitHub\CN5\HocTaiCongTyPhuong\Piggy\Piggy.ConsoleApp2\obj\Debug\Piggy.ConsoleApp2.csproj.CoreCompileInputs.cache
+F:\GitHub\CN5\HocTaiCongTyPhuong\Piggy\Piggy.ConsoleApp2\obj\Debug\Piggy.ConsoleApp2.exe
+F:\GitHub\CN5\HocTaiCongTyPhuong\Piggy\Piggy.ConsoleApp2\obj\Debug\Piggy.ConsoleApp2.pdb
