@@ -1,7 +1,0 @@
-F:\GitHub\CN5\HocTaiCongTyPhuong\Piggy\Piggy.Console\bin\Debug\Piggy.Console.exe.config
-F:\GitHub\CN5\HocTaiCongTyPhuong\Piggy\Piggy.Console\bin\Debug\Piggy.Console.exe
-F:\GitHub\CN5\HocTaiCongTyPhuong\Piggy\Piggy.Console\bin\Debug\Piggy.Console.pdb
-F:\GitHub\CN5\HocTaiCongTyPhuong\Piggy\Piggy.Console\obj\Debug\Piggy.Console.csprojAssemblyReference.cache
-F:\GitHub\CN5\HocTaiCongTyPhuong\Piggy\Piggy.Console\obj\Debug\Piggy.Console.csproj.CoreCompileInputs.cache
-F:\GitHub\CN5\HocTaiCongTyPhuong\Piggy\Piggy.Console\obj\Debug\Piggy.Console.exe
-F:\GitHub\CN5\HocTaiCongTyPhuong\Piggy\Piggy.Console\obj\Debug\Piggy.Console.pdb
