@@ -11,5 +11,6 @@ namespace Bus.DTO
         public string BSX { get; set; }
         public string Make { get; set; }
         public string DateRegistration { get; set; }
+        public string OwnerID { get; set; }
     }
 }
