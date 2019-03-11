@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bus.DTO
+namespace Project.BusManager.DTO
 {
-    public class BusStation
+    public class BusStationDTO
     {
         public int Id { get; set; }
         public string BusID { get; set; }

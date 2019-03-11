@@ -4,16 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bus.DTO
+namespace Project.BusManager.DTO
 {
-    class Owner
+    class OwnerDTO
     {
-
         public string Id { get; set; }
         public string Name { get; set; }
-        public string Address { get; set; }
         public string Phone { get; set; }
-        public string DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
         public string CMND { get; set; }
+        public string Address { get; set; }
     }
 }
