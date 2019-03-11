@@ -16,5 +16,17 @@ namespace Bus
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            TblView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            TblView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            TblView.Columns[0].Name = "BXS";
+            TblView.Columns[1].Name = "Tài Xế ";
+            TblView.Columns[2].Name = "Phụ Xe";
+            TblView.Columns[3].Name = "Giờ ra Trạm";
+            TblView.Columns[4].Name = "Giờ về Trạm";
+            TblView.Columns[5].Name = "Trạng Thái";
+        }
     }
 }
