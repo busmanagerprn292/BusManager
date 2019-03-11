@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace Bus.DTO
 {
-    class BusStation
+    public class BusStation
     {
         public int id { get; set; }
-        public string BSX { get; set; }
+        public string BusID { get; set; }
         public string MSNVDRIVER { get; set; }
         public string MSNVCAST { get; set; }
         public string DepartureTime { get; set; }
         public string TimeBack { get; set; }
+        public int Status { get; set; }
     }
 }

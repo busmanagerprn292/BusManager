@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Bus.DTO
 {
-    public enum RoleDTO
+    public class RoleDTO
     {
-        laixe = 1,
-        thungan = 2
+        public string RoleID { get; set; }
+        public string RoleName { get; set; }
     }
 }

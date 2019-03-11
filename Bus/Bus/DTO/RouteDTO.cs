@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Bus.DTO
 {
-    class TuyenDuongDTO
+    public class RouteDTO
     {
         public int Id { get; set; }
-        public string BSX { get; set; }
-        public string Tuyenduong { get; set; }
+        public string TuyenDuong { get; set; }
     }
 }
