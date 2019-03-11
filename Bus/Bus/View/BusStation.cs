@@ -28,5 +28,10 @@ namespace Bus
             TblView.Columns[4].Name = "Giờ về Trạm";
             TblView.Columns[5].Name = "Trạng Thái";
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
