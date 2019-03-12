@@ -51,6 +51,7 @@
     <Compile Include="DTO\BusStation.cs" />
     <Compile Include="DTO\Owner.cs" />
     <Compile Include="DTO\RoleDTO.cs" />
+    <Compile Include="DTO\RouteDTO.cs" />
     <Compile Include="DTO\StaffDTO.cs" />
     <Compile Include="View\BusStation.cs">
       <SubType>Form</SubType>
