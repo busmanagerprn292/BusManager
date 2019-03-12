@@ -52,7 +52,6 @@
     <Compile Include="DTO\Owner.cs" />
     <Compile Include="DTO\RoleDTO.cs" />
     <Compile Include="DTO\StaffDTO.cs" />
-    <Compile Include="DTO\TuyenDuongDTO.cs" />
     <Compile Include="View\BusStation.cs">
       <SubType>Form</SubType>
     </Compile>
