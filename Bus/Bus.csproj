@@ -46,10 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\BusDAO.cs" />
+    <Compile Include="DAO\DAO.cs" />
     <Compile Include="DAO\DBConnection.cs" />
     <Compile Include="DTO\BusDTO.cs" />
-    <Compile Include="DTO\BusStation.cs" />
-    <Compile Include="DTO\Owner.cs" />
+    <Compile Include="DTO\BusStationDTO.cs" />
+    <Compile Include="DTO\OwnerDTO.cs" />
     <Compile Include="DTO\RoleDTO.cs" />
     <Compile Include="DTO\RouteDTO.cs" />
     <Compile Include="DTO\StaffDTO.cs" />

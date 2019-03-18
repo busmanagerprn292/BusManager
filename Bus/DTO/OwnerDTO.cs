@@ -12,7 +12,7 @@ namespace Bus.DTO
         public string Name { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
-        public string DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
         public string CMND { get; set; }
     }
 }

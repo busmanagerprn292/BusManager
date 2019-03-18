@@ -13,7 +13,7 @@ namespace Bus.DAO
     public class DBConnection
     {
         private SqlDataAdapter myAdapter;
-        private SqlConnection conn;
+        private readonly SqlConnection conn;
         public DBConnection()
         {
             string strConn = ConfigurationManager.
@@ -84,7 +84,6 @@ namespace Bus.DAO
             }
             return true;
         }
-
         public bool ExecuteUpdateQuery(String _query, SqlParameter[] sqlParameter)
         {
             SqlCommand myCommand = new SqlCommand();
@@ -94,6 +93,29 @@ namespace Bus.DAO
                 myCommand.CommandText = _query;
                 myCommand.Parameters.AddRange(sqlParameter);
                 myAdapter.UpdateCommand = myCommand;
+                myCommand.ExecuteNonQuery();
+            }
+            catch (SqlException e)
+            {
+                Trace.TraceError(e.Message);
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+                myCommand.Dispose();
+            }
+            return true;
+        }
+        public bool ExecuteDeleteQuery(string _query, SqlParameter[] sqlParameter)
+        {
+            SqlCommand myCommand = new SqlCommand();
+            try
+            {
+                myCommand.Connection = OpenConnection();
+                myCommand.CommandText = _query;
+                myCommand.Parameters.AddRange(sqlParameter);
+                myAdapter.DeleteCommand = myCommand;
                 myCommand.ExecuteNonQuery();
             }
             catch (SqlException e)
