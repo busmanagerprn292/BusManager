@@ -143,6 +143,7 @@
             this.New.TabIndex = 12;
             this.New.Text = "Add New";
             this.New.UseVisualStyleBackColor = true;
+            this.New.Click += new System.EventHandler(this.New_Click);
             // 
             // comboBox1
             // 

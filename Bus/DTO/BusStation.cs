@@ -8,7 +8,7 @@ namespace Bus.DTO
 {
     public class BusStation
     {
-        public int id { get; set; }
+        public int ID { get; set; }
         public string BusID { get; set; }
         public string MSNVDRIVER { get; set; }
         public string MSNVCAST { get; set; }

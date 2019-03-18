@@ -53,6 +53,7 @@
     <Compile Include="DTO\RoleDTO.cs" />
     <Compile Include="DTO\RouteDTO.cs" />
     <Compile Include="DTO\StaffDTO.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="View\BusStation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +83,7 @@
     <EmbeddedResource Include="View\StaffView.resx">
       <DependentUpon>StaffView.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -97,6 +99,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BLL\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.7.11.0.8083\analyzers\Google.Protobuf.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.7.11.0.8083\analyzers\SonarAnalyzer.CSharp.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.7.11.0.8083\analyzers\SonarAnalyzer.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

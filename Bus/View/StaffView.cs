@@ -31,9 +31,12 @@ namespace Bus.View
 
         private void TblView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            
         }
 
- 
+        private void New_Click(object sender, EventArgs e)
+        {
+            var a = "true";
+        }
     }
 }
