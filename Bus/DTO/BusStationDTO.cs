@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bus.DTO
 {
-    public class BusStation
+    public class BusStationDTO
     {
         public int ID { get; set; }
         public string BusID { get; set; }
