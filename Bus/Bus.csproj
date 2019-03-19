@@ -49,6 +49,7 @@
     <Compile Include="DAO\BusDAO.cs" />
     <Compile Include="DAO\DAO.cs" />
     <Compile Include="DAO\DBConnection.cs" />
+    <Compile Include="DAO\StaffDAO.cs" />
     <Compile Include="DTO\BusDTO.cs" />
     <Compile Include="DTO\BusStationDTO.cs" />
     <Compile Include="DTO\OwnerDTO.cs" />
