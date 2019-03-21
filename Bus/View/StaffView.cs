@@ -24,5 +24,9 @@ namespace Bus.View
         
         }
 
+        private void gvStaff_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
