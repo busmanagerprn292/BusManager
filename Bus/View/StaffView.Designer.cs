@@ -56,6 +56,21 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tblViewBus = new System.Windows.Forms.DataGridView();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtBusID = new System.Windows.Forms.TextBox();
+            this.txtBSX = new System.Windows.Forms.TextBox();
+            this.txtTimeGo = new System.Windows.Forms.TextBox();
+            this.txtTimeBack = new System.Windows.Forms.TextBox();
+            this.cbCasher = new System.Windows.Forms.ComboBox();
+            this.cbDriver = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gvStaff)).BeginInit();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -67,6 +82,8 @@
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tblViewBus)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -85,7 +102,7 @@
             this.gvStaff.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gvStaff.Location = new System.Drawing.Point(0, 0);
             this.gvStaff.Name = "gvStaff";
-            this.gvStaff.Size = new System.Drawing.Size(552, 525);
+            this.gvStaff.Size = new System.Drawing.Size(459, 525);
             this.gvStaff.TabIndex = 1;
             // 
             // panel1
@@ -110,7 +127,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(710, 525);
+            this.panel1.Size = new System.Drawing.Size(592, 525);
             this.panel1.TabIndex = 2;
             // 
             // lbStaffImage
@@ -273,7 +290,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1284, 561);
+            this.tabControl1.Size = new System.Drawing.Size(1073, 561);
             this.tabControl1.TabIndex = 3;
             // 
             // tabPage1
@@ -283,7 +300,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1276, 535);
+            this.tabPage1.Size = new System.Drawing.Size(1065, 535);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Staff";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -301,8 +318,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Size = new System.Drawing.Size(1266, 525);
-            this.splitContainer1.SplitterDistance = 552;
+            this.splitContainer1.Size = new System.Drawing.Size(1055, 525);
+            this.splitContainer1.SplitterDistance = 459;
             this.splitContainer1.TabIndex = 0;
             // 
             // tabPage2
@@ -312,7 +329,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1276, 535);
+            this.tabPage2.Size = new System.Drawing.Size(1065, 535);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Bus";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -323,7 +340,7 @@
             this.splitContainer2.Location = new System.Drawing.Point(3, 3);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.splitContainer2.Size = new System.Drawing.Size(1266, 525);
+            this.splitContainer2.Size = new System.Drawing.Size(1055, 525);
             this.splitContainer2.SplitterDistance = 220;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -333,7 +350,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1276, 535);
+            this.tabPage3.Size = new System.Drawing.Size(1065, 535);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Owner";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -343,7 +360,7 @@
             this.tabPage4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1276, 535);
+            this.tabPage4.Size = new System.Drawing.Size(1065, 535);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Route";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -351,18 +368,157 @@
             // tabPage5
             // 
             this.tabPage5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabPage5.Controls.Add(this.cbDriver);
+            this.tabPage5.Controls.Add(this.cbCasher);
+            this.tabPage5.Controls.Add(this.txtTimeBack);
+            this.tabPage5.Controls.Add(this.txtTimeGo);
+            this.tabPage5.Controls.Add(this.txtBSX);
+            this.tabPage5.Controls.Add(this.txtBusID);
+            this.tabPage5.Controls.Add(this.tblViewBus);
+            this.tabPage5.Controls.Add(this.label8);
+            this.tabPage5.Controls.Add(this.label9);
+            this.tabPage5.Controls.Add(this.label10);
+            this.tabPage5.Controls.Add(this.label11);
+            this.tabPage5.Controls.Add(this.label12);
+            this.tabPage5.Controls.Add(this.label13);
+            this.tabPage5.Controls.Add(this.label14);
+            this.tabPage5.Controls.Add(this.label15);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1276, 535);
+            this.tabPage5.Size = new System.Drawing.Size(1065, 535);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Scheduling";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // tblViewBus
+            // 
+            this.tblViewBus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tblViewBus.Location = new System.Drawing.Point(1, 262);
+            this.tblViewBus.Name = "tblViewBus";
+            this.tblViewBus.Size = new System.Drawing.Size(1171, 266);
+            this.tblViewBus.TabIndex = 16;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(1001, 262);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(0, 13);
+            this.label8.TabIndex = 15;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(668, 112);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(41, 13);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "Driver :";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(668, 67);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(46, 13);
+            this.label10.TabIndex = 13;
+            this.label10.Text = "Casher :";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(458, 17);
+            this.label11.MinimumSize = new System.Drawing.Size(350, 50);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(350, 50);
+            this.label11.TabIndex = 12;
+            this.label11.Text = "QUẢN LÝ BẾN XE";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(169, 120);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(34, 13);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "BSX :";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(169, 203);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(93, 13);
+            this.label13.TabIndex = 10;
+            this.label13.Text = "Thời gian về bến :";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(169, 161);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(101, 13);
+            this.label14.TabIndex = 9;
+            this.label14.Text = "Thời gian khởi hành";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(169, 75);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(49, 13);
+            this.label15.TabIndex = 8;
+            this.label15.Text = "BUS ID :";
+            // 
+            // txtBusID
+            // 
+            this.txtBusID.Location = new System.Drawing.Point(328, 75);
+            this.txtBusID.Name = "txtBusID";
+            this.txtBusID.Size = new System.Drawing.Size(214, 20);
+            this.txtBusID.TabIndex = 17;
+            // 
+            // txtBSX
+            // 
+            this.txtBSX.Location = new System.Drawing.Point(328, 117);
+            this.txtBSX.Name = "txtBSX";
+            this.txtBSX.Size = new System.Drawing.Size(214, 20);
+            this.txtBSX.TabIndex = 18;
+            // 
+            // txtTimeGo
+            // 
+            this.txtTimeGo.Location = new System.Drawing.Point(328, 161);
+            this.txtTimeGo.Name = "txtTimeGo";
+            this.txtTimeGo.Size = new System.Drawing.Size(214, 20);
+            this.txtTimeGo.TabIndex = 19;
+            // 
+            // txtTimeBack
+            // 
+            this.txtTimeBack.Location = new System.Drawing.Point(328, 203);
+            this.txtTimeBack.Name = "txtTimeBack";
+            this.txtTimeBack.Size = new System.Drawing.Size(214, 20);
+            this.txtTimeBack.TabIndex = 20;
+            // 
+            // cbCasher
+            // 
+            this.cbCasher.FormattingEnabled = true;
+            this.cbCasher.Location = new System.Drawing.Point(737, 67);
+            this.cbCasher.Name = "cbCasher";
+            this.cbCasher.Size = new System.Drawing.Size(215, 21);
+            this.cbCasher.TabIndex = 21;
+            // 
+            // cbDriver
+            // 
+            this.cbDriver.Location = new System.Drawing.Point(737, 112);
+            this.cbDriver.Name = "cbDriver";
+            this.cbDriver.Size = new System.Drawing.Size(215, 20);
+            this.cbDriver.TabIndex = 22;
             // 
             // StaffView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1284, 561);
+            this.ClientSize = new System.Drawing.Size(1073, 561);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.Name = "StaffView";
@@ -380,6 +536,9 @@
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tblViewBus)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -415,5 +574,20 @@
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DataGridView tblViewBus;
+        private System.Windows.Forms.TextBox cbDriver;
+        private System.Windows.Forms.ComboBox cbCasher;
+        private System.Windows.Forms.TextBox txtTimeBack;
+        private System.Windows.Forms.TextBox txtTimeGo;
+        private System.Windows.Forms.TextBox txtBSX;
+        private System.Windows.Forms.TextBox txtBusID;
     }
 }

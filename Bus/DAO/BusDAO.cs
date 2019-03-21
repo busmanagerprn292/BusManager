@@ -57,9 +57,9 @@ namespace Bus.DAO
                 conn.ExecuteInsertQuery(query, sqlParameters);
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                throw ex;
+                throw ;
             }
         }
 
