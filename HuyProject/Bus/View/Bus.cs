@@ -17,6 +17,7 @@ namespace Bus.View
         private BusBLL bll;
         private BusDTO main_busDto; //chua bus hien hanh
         private OwnerDTO main_ownerDto; //chua owner cua bus hien hanh
+        private List<BusStationDTO> main_scheduleDto; //chua owner cua bus hien hanh
         public Bus()
         {
             InitializeComponent();
@@ -32,7 +33,17 @@ namespace Bus.View
         private void LoadData()
         {
             dgvBus.DataSource = bll.GetBusList();
-            //dgvBus.co
+        }
+        private void LoadListSchedule()
+        {
+            dgvSchedule.DataSource = main_scheduleDto;
+            dgvSchedule.Columns.Remove("ID");
+            dgvSchedule.Columns.Remove("MSNVDRIVER");
+            dgvSchedule.Columns.Remove("MSNVCAST");
+            dgvSchedule.Columns[1].DefaultCellStyle.Format = "H:mm:ss";
+            dgvSchedule.Columns[2].DefaultCellStyle.Format = "H:mm:ss";
+            dgvSchedule.Columns[3].DefaultCellStyle.Format = "H:mm:ss";
+            dgvSchedule.Columns[0].DefaultCellStyle.Format = "H:mm:ss";
         }
 
         private void dgvBus_Click(object sender, EventArgs e)
@@ -47,6 +58,8 @@ namespace Bus.View
             {
                 main_ownerDto = bll.GetOwnerById(dgvBus.Rows[index].Cells["OwnerId"].Value.ToString());
                 txtOwnerName.Text = main_ownerDto.Name;
+                main_scheduleDto = bll.SearchScheduleOfBusByBusId(txtId.Text);
+                LoadListSchedule();
             }
             catch (Exception ex)
             {
@@ -68,6 +81,11 @@ namespace Bus.View
             txtBSX.Text = "";
             txtBrand.Text = "";
             dtpDateRegistration.Value = DateTime.Parse("1/1/1970");
+
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
 
         }
     }

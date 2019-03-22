@@ -50,6 +50,7 @@
     <Compile Include="BLL\OwnerBLL.cs" />
     <Compile Include="BLL\RouteBLL.cs" />
     <Compile Include="DAO\BusDAO.cs" />
+    <Compile Include="DAO\BusStationDAO.cs" />
     <Compile Include="DAO\DAO.cs" />
     <Compile Include="DAO\DBConnection.cs" />
     <Compile Include="DAO\OwnerDAO.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="DTO\OwnerDTO.cs" />
     <Compile Include="DTO\RoleDTO.cs" />
     <Compile Include="DTO\RouteDTO.cs" />
+    <Compile Include="DTO\ScheduleViewModelOnBus.cs" />
     <Compile Include="DTO\StaffDTO.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="View\Bus.cs">
@@ -72,12 +74,6 @@
     </Compile>
     <Compile Include="View\BusDetailOfOwner.Designer.cs">
       <DependentUpon>BusDetailOfOwner.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\BusStation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\BusStation.Designer.cs">
-      <DependentUpon>BusStation.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,20 +95,11 @@
     <Compile Include="View\Route.Designer.cs">
       <DependentUpon>Route.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\StaffView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\StaffView.Designer.cs">
-      <DependentUpon>StaffView.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="View\Bus.resx">
       <DependentUpon>Bus.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\BusDetailOfOwner.resx">
       <DependentUpon>BusDetailOfOwner.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\BusStation.resx">
-      <DependentUpon>BusStation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -131,9 +118,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Route.resx">
       <DependentUpon>Route.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\StaffView.resx">
-      <DependentUpon>StaffView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

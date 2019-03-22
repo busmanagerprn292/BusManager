@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnAddSchedule = new System.Windows.Forms.Button();
+            this.txtOwnerName = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -50,8 +52,6 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvBus = new System.Windows.Forms.DataGridView();
-            this.txtOwnerName = new System.Windows.Forms.TextBox();
-            this.btnAddSchedule = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -94,9 +94,27 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dgvBus);
-            this.splitContainer1.Size = new System.Drawing.Size(921, 542);
-            this.splitContainer1.SplitterDistance = 320;
+            this.splitContainer1.Size = new System.Drawing.Size(922, 533);
+            this.splitContainer1.SplitterDistance = 314;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // btnAddSchedule
+            // 
+            this.btnAddSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddSchedule.Location = new System.Drawing.Point(12, 18);
+            this.btnAddSchedule.Name = "btnAddSchedule";
+            this.btnAddSchedule.Size = new System.Drawing.Size(129, 32);
+            this.btnAddSchedule.TabIndex = 29;
+            this.btnAddSchedule.Text = "Create Schedule";
+            this.btnAddSchedule.UseVisualStyleBackColor = true;
+            // 
+            // txtOwnerName
+            // 
+            this.txtOwnerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOwnerName.Location = new System.Drawing.Point(254, 18);
+            this.txtOwnerName.Name = "txtOwnerName";
+            this.txtOwnerName.Size = new System.Drawing.Size(192, 26);
+            this.txtOwnerName.TabIndex = 28;
             // 
             // groupBox2
             // 
@@ -120,6 +138,7 @@
             this.btnSearch.TabIndex = 23;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // textBox2
             // 
@@ -299,33 +318,15 @@
             this.dgvBus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvBus.Location = new System.Drawing.Point(0, 0);
             this.dgvBus.Name = "dgvBus";
-            this.dgvBus.Size = new System.Drawing.Size(921, 218);
+            this.dgvBus.Size = new System.Drawing.Size(922, 215);
             this.dgvBus.TabIndex = 0;
             this.dgvBus.Click += new System.EventHandler(this.dgvBus_Click);
-            // 
-            // txtOwnerName
-            // 
-            this.txtOwnerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOwnerName.Location = new System.Drawing.Point(254, 18);
-            this.txtOwnerName.Name = "txtOwnerName";
-            this.txtOwnerName.Size = new System.Drawing.Size(192, 26);
-            this.txtOwnerName.TabIndex = 28;
-            // 
-            // btnAddSchedule
-            // 
-            this.btnAddSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddSchedule.Location = new System.Drawing.Point(12, 18);
-            this.btnAddSchedule.Name = "btnAddSchedule";
-            this.btnAddSchedule.Size = new System.Drawing.Size(129, 32);
-            this.btnAddSchedule.TabIndex = 29;
-            this.btnAddSchedule.Text = "Create Schedule";
-            this.btnAddSchedule.UseVisualStyleBackColor = true;
             // 
             // Bus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(921, 542);
+            this.ClientSize = new System.Drawing.Size(922, 533);
             this.Controls.Add(this.splitContainer1);
             this.Name = "Bus";
             this.Text = "Bus";
