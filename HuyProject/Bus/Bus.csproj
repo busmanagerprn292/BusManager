@@ -49,12 +49,15 @@
     <Compile Include="BLL\BusBLL.cs" />
     <Compile Include="BLL\OwnerBLL.cs" />
     <Compile Include="BLL\RouteBLL.cs" />
+    <Compile Include="BLL\StaffBLL.cs" />
     <Compile Include="DAO\BusDAO.cs" />
     <Compile Include="DAO\BusStationDAO.cs" />
     <Compile Include="DAO\DAO.cs" />
     <Compile Include="DAO\DBConnection.cs" />
     <Compile Include="DAO\OwnerDAO.cs" />
+    <Compile Include="DAO\RoleDao.cs" />
     <Compile Include="DAO\RouteDAO.cs" />
+    <Compile Include="DAO\StaffDAO.cs" />
     <Compile Include="DTO\BusDTO.cs" />
     <Compile Include="DTO\BusStationDTO.cs" />
     <Compile Include="DTO\OwnerDTO.cs" />
@@ -95,6 +98,18 @@
     <Compile Include="View\Route.Designer.cs">
       <DependentUpon>Route.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Schudeling.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Schudeling.Designer.cs">
+      <DependentUpon>Schudeling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\StaffView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\StaffView.Designer.cs">
+      <DependentUpon>StaffView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="View\Bus.resx">
       <DependentUpon>Bus.cs</DependentUpon>
     </EmbeddedResource>
@@ -118,6 +133,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Route.resx">
       <DependentUpon>Route.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Schudeling.resx">
+      <DependentUpon>Schudeling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\StaffView.resx">
+      <DependentUpon>StaffView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

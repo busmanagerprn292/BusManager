@@ -101,5 +101,17 @@ namespace Bus.View
             Bus form = new Bus();
             form.ShowDialog();
         }
+
+        private void staffMenu_Click(object sender, EventArgs e)
+        {
+            StaffView form = new StaffView();
+            form.ShowDialog();
+        }
+
+        private void schedulingMenu_Click(object sender, EventArgs e)
+        {
+            Schudeling form = new Schudeling();
+            form.ShowDialog();
+        }
     }
 }

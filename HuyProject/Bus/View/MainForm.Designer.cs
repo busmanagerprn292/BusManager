@@ -52,6 +52,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -80,6 +81,7 @@
             this.staffMenu.Name = "staffMenu";
             this.staffMenu.Size = new System.Drawing.Size(43, 20);
             this.staffMenu.Text = "&Staff";
+            this.staffMenu.Click += new System.EventHandler(this.staffMenu_Click);
             // 
             // ownerMenu
             // 
@@ -107,6 +109,7 @@
             this.schedulingMenu.Name = "schedulingMenu";
             this.schedulingMenu.Size = new System.Drawing.Size(78, 20);
             this.schedulingMenu.Text = "S&cheduling";
+            this.schedulingMenu.Click += new System.EventHandler(this.schedulingMenu_Click);
             // 
             // viewMenu
             // 
@@ -242,18 +245,31 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 49);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(632, 382);
+            this.panel1.TabIndex = 4;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(632, 453);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
+            this.MinimizeBox = false;
             this.Name = "MainForm";
             this.Text = "MainForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
@@ -290,6 +306,7 @@
         private System.Windows.Forms.ToolStripMenuItem viewMenu;
         private System.Windows.Forms.ToolStripMenuItem toolbarToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem statusBarToolStripMenuItem1;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
