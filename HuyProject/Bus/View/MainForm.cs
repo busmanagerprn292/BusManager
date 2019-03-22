@@ -95,5 +95,11 @@ namespace Bus.View
             Owner form = new Owner();
             form.ShowDialog();
         }
+
+        private void busMenu_Click(object sender, EventArgs e)
+        {
+            Bus form = new Bus();
+            form.ShowDialog();
+        }
     }
 }

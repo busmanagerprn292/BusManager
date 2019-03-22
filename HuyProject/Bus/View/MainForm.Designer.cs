@@ -100,6 +100,7 @@
             this.busMenu.Name = "busMenu";
             this.busMenu.Size = new System.Drawing.Size(38, 20);
             this.busMenu.Text = "&Bus";
+            this.busMenu.Click += new System.EventHandler(this.busMenu_Click);
             // 
             // schedulingMenu
             // 

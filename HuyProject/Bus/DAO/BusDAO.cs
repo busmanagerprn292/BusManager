@@ -19,11 +19,11 @@ namespace Bus.DAO
         private BusDTO GetBusDTOFromDataRow(DataRow row)
         {
             BusDTO dto = new BusDTO();
-            dto.Id = row["Id"].ToString();
+            dto.Id = row["BusId"].ToString();
             dto.BSX = row["BSX"].ToString();
-            dto.Brand = row["BSX"].ToString();
-            dto.OwnerID = row["BSX"].ToString();
-            dto.RouteID = row["BSX"].ToString();
+            dto.Brand = row["Brand"].ToString();
+            dto.OwnerID = row["OwnerId"].ToString();
+            dto.RouteID = row["IDTuyenDuong"].ToString();
             dto.DateRegistration = DateTime.Parse(row["DateRegistration"].ToString());
             return dto;
         }

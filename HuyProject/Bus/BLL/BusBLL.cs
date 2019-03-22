@@ -15,11 +15,11 @@ namespace Bus.BLL
         {
             dao = new BusDAO();
         }
-        public List<BusDTO> GetOwnerList()
+        public List<BusDTO> GetBusList()
         {
             return dao.GetAll();
         }
-        public BusDTO GetOwnerById(string id)
+        public BusDTO GetBusById(string id)
         {
             return dao.SearchById(id);
         }
@@ -57,6 +57,11 @@ namespace Bus.BLL
             {
                 throw ex;
             }
+        }
+        public OwnerDTO GetOwnerById (string id)
+        {
+            OwnerDAO oDao = new OwnerDAO();
+            return oDao.SearchById(id);
         }
     }
 }
