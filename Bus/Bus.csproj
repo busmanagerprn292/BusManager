@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\StaffBLL.cs" />
     <Compile Include="DAO\BusDAO.cs" />
     <Compile Include="DAO\DAO.cs" />
     <Compile Include="DAO\DBConnection.cs" />
@@ -60,6 +61,12 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Schudeling.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Schudeling.Designer.cs">
+      <DependentUpon>Schudeling.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\StaffView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +82,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\Schudeling.resx">
+      <DependentUpon>Schudeling.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\StaffView.resx">
       <DependentUpon>StaffView.cs</DependentUpon>
     </EmbeddedResource>
@@ -92,9 +102,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BLL\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.7.11.0.8083\analyzers\Google.Protobuf.dll" />
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.7.11.0.8083\analyzers\SonarAnalyzer.CSharp.dll" />

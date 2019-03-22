@@ -31,32 +31,41 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtStaffMSNV = new System.Windows.Forms.TextBox();
-            this.txtStaffName = new System.Windows.Forms.TextBox();
-            this.txtStaffCMND = new System.Windows.Forms.TextBox();
-            this.txtStaffPhone = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dtpStaffDateOfBirth = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cbStaffRole = new System.Windows.Forms.ComboBox();
-            this.btnStaffAdd = new System.Windows.Forms.Button();
-            this.btnStaffUpdate = new System.Windows.Forms.Button();
-            this.btnStaffDelete = new System.Windows.Forms.Button();
-            this.btnStaffNew = new System.Windows.Forms.Button();
             this.gvStaff = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnStaffNew = new System.Windows.Forms.Button();
+            this.btnStaffDelete = new System.Windows.Forms.Button();
+            this.btnStaffUpdate = new System.Windows.Forms.Button();
+            this.btnStaffAdd = new System.Windows.Forms.Button();
+            this.cbStaffRole = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dtpStaffDateOfBirth = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtStaffPhone = new System.Windows.Forms.TextBox();
+            this.txtStaffCMND = new System.Windows.Forms.TextBox();
+            this.txtStaffName = new System.Windows.Forms.TextBox();
+            this.txtStaffMSNV = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.date = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.name = new System.Windows.Forms.Label();
+            this.msnv = new System.Windows.Forms.Label();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvStaff)).BeginInit();
+            this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,8 +108,26 @@
             this.splitContainer1.SplitterDistance = 459;
             this.splitContainer1.TabIndex = 0;
             // 
+            // gvStaff
+            // 
+            this.gvStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvStaff.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gvStaff.Location = new System.Drawing.Point(0, 0);
+            this.gvStaff.Name = "gvStaff";
+            this.gvStaff.Size = new System.Drawing.Size(459, 525);
+            this.gvStaff.TabIndex = 1;
+            // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.msnv);
+            this.panel1.Controls.Add(this.name);
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.label12);
+            this.panel1.Controls.Add(this.date);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.btnStaffNew);
             this.panel1.Controls.Add(this.btnStaffDelete);
             this.panel1.Controls.Add(this.btnStaffUpdate);
@@ -123,90 +150,60 @@
             this.panel1.Size = new System.Drawing.Size(592, 525);
             this.panel1.TabIndex = 2;
             // 
-            // label2
+            // label8
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(60, 97);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 16);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "MSNV";
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(210, 21);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(245, 31);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "STAFF MANAGER";
             // 
-            // label3
+            // btnStaffNew
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(63, 359);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 16);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "CMND";
+            this.btnStaffNew.Location = new System.Drawing.Point(65, 467);
+            this.btnStaffNew.Name = "btnStaffNew";
+            this.btnStaffNew.Size = new System.Drawing.Size(75, 27);
+            this.btnStaffNew.TabIndex = 15;
+            this.btnStaffNew.Text = "New";
+            this.btnStaffNew.UseVisualStyleBackColor = true;
+            this.btnStaffNew.Click += new System.EventHandler(this.btnStaffNew_Click);
             // 
-            // label4
+            // btnStaffDelete
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(62, 151);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 16);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Name";
+            this.btnStaffDelete.Location = new System.Drawing.Point(429, 467);
+            this.btnStaffDelete.Name = "btnStaffDelete";
+            this.btnStaffDelete.Size = new System.Drawing.Size(75, 27);
+            this.btnStaffDelete.TabIndex = 14;
+            this.btnStaffDelete.Text = "Delete";
+            this.btnStaffDelete.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // btnStaffUpdate
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(64, 308);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 16);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Phone";
+            this.btnStaffUpdate.Location = new System.Drawing.Point(303, 467);
+            this.btnStaffUpdate.Name = "btnStaffUpdate";
+            this.btnStaffUpdate.Size = new System.Drawing.Size(75, 27);
+            this.btnStaffUpdate.TabIndex = 13;
+            this.btnStaffUpdate.Text = "Update";
+            this.btnStaffUpdate.UseVisualStyleBackColor = true;
             // 
-            // txtStaffMSNV
+            // btnStaffAdd
             // 
-            this.txtStaffMSNV.Location = new System.Drawing.Point(126, 96);
-            this.txtStaffMSNV.Name = "txtStaffMSNV";
-            this.txtStaffMSNV.Size = new System.Drawing.Size(228, 20);
-            this.txtStaffMSNV.TabIndex = 4;
+            this.btnStaffAdd.Location = new System.Drawing.Point(182, 467);
+            this.btnStaffAdd.Name = "btnStaffAdd";
+            this.btnStaffAdd.Size = new System.Drawing.Size(75, 27);
+            this.btnStaffAdd.TabIndex = 12;
+            this.btnStaffAdd.Text = "Add";
+            this.btnStaffAdd.UseVisualStyleBackColor = true;
             // 
-            // txtStaffName
+            // cbStaffRole
             // 
-            this.txtStaffName.Location = new System.Drawing.Point(126, 151);
-            this.txtStaffName.Name = "txtStaffName";
-            this.txtStaffName.Size = new System.Drawing.Size(228, 20);
-            this.txtStaffName.TabIndex = 5;
-            // 
-            // txtStaffCMND
-            // 
-            this.txtStaffCMND.Location = new System.Drawing.Point(126, 361);
-            this.txtStaffCMND.Name = "txtStaffCMND";
-            this.txtStaffCMND.Size = new System.Drawing.Size(228, 20);
-            this.txtStaffCMND.TabIndex = 6;
-            // 
-            // txtStaffPhone
-            // 
-            this.txtStaffPhone.Location = new System.Drawing.Point(126, 308);
-            this.txtStaffPhone.Name = "txtStaffPhone";
-            this.txtStaffPhone.Size = new System.Drawing.Size(228, 20);
-            this.txtStaffPhone.TabIndex = 7;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(25, 210);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(82, 16);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Date Of Birth";
-            // 
-            // dtpStaffDateOfBirth
-            // 
-            this.dtpStaffDateOfBirth.Location = new System.Drawing.Point(126, 210);
-            this.dtpStaffDateOfBirth.Name = "dtpStaffDateOfBirth";
-            this.dtpStaffDateOfBirth.Size = new System.Drawing.Size(228, 20);
-            this.dtpStaffDateOfBirth.TabIndex = 9;
+            this.cbStaffRole.FormattingEnabled = true;
+            this.cbStaffRole.Location = new System.Drawing.Point(126, 262);
+            this.cbStaffRole.Name = "cbStaffRole";
+            this.cbStaffRole.Size = new System.Drawing.Size(228, 21);
+            this.cbStaffRole.TabIndex = 11;
             // 
             // label7
             // 
@@ -218,59 +215,92 @@
             this.label7.TabIndex = 10;
             this.label7.Text = "Role";
             // 
-            // cbStaffRole
+            // dtpStaffDateOfBirth
             // 
-            this.cbStaffRole.FormattingEnabled = true;
-            this.cbStaffRole.Location = new System.Drawing.Point(126, 262);
-            this.cbStaffRole.Name = "cbStaffRole";
-            this.cbStaffRole.Size = new System.Drawing.Size(228, 21);
-            this.cbStaffRole.TabIndex = 11;
+            this.dtpStaffDateOfBirth.CustomFormat = "dd-MM-yyyy";
+            this.dtpStaffDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpStaffDateOfBirth.Location = new System.Drawing.Point(126, 210);
+            this.dtpStaffDateOfBirth.Name = "dtpStaffDateOfBirth";
+            this.dtpStaffDateOfBirth.Size = new System.Drawing.Size(228, 20);
+            this.dtpStaffDateOfBirth.TabIndex = 9;
             // 
-            // btnStaffAdd
+            // label6
             // 
-            this.btnStaffAdd.Location = new System.Drawing.Point(182, 467);
-            this.btnStaffAdd.Name = "btnStaffAdd";
-            this.btnStaffAdd.Size = new System.Drawing.Size(75, 27);
-            this.btnStaffAdd.TabIndex = 12;
-            this.btnStaffAdd.Text = "Add";
-            this.btnStaffAdd.UseVisualStyleBackColor = true;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(25, 210);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(82, 16);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Date Of Birth";
             // 
-            // btnStaffUpdate
+            // txtStaffPhone
             // 
-            this.btnStaffUpdate.Location = new System.Drawing.Point(303, 467);
-            this.btnStaffUpdate.Name = "btnStaffUpdate";
-            this.btnStaffUpdate.Size = new System.Drawing.Size(75, 27);
-            this.btnStaffUpdate.TabIndex = 13;
-            this.btnStaffUpdate.Text = "Update";
-            this.btnStaffUpdate.UseVisualStyleBackColor = true;
+            this.txtStaffPhone.Location = new System.Drawing.Point(126, 308);
+            this.txtStaffPhone.Name = "txtStaffPhone";
+            this.txtStaffPhone.Size = new System.Drawing.Size(228, 20);
+            this.txtStaffPhone.TabIndex = 7;
             // 
-            // btnStaffDelete
+            // txtStaffCMND
             // 
-            this.btnStaffDelete.Location = new System.Drawing.Point(429, 467);
-            this.btnStaffDelete.Name = "btnStaffDelete";
-            this.btnStaffDelete.Size = new System.Drawing.Size(75, 27);
-            this.btnStaffDelete.TabIndex = 14;
-            this.btnStaffDelete.Text = "Delete";
-            this.btnStaffDelete.UseVisualStyleBackColor = true;
+            this.txtStaffCMND.Location = new System.Drawing.Point(126, 361);
+            this.txtStaffCMND.Name = "txtStaffCMND";
+            this.txtStaffCMND.Size = new System.Drawing.Size(228, 20);
+            this.txtStaffCMND.TabIndex = 6;
             // 
-            // btnStaffNew
+            // txtStaffName
             // 
-            this.btnStaffNew.Location = new System.Drawing.Point(65, 467);
-            this.btnStaffNew.Name = "btnStaffNew";
-            this.btnStaffNew.Size = new System.Drawing.Size(75, 27);
-            this.btnStaffNew.TabIndex = 15;
-            this.btnStaffNew.Text = "New";
-            this.btnStaffNew.UseVisualStyleBackColor = true;
+            this.txtStaffName.Location = new System.Drawing.Point(126, 151);
+            this.txtStaffName.Name = "txtStaffName";
+            this.txtStaffName.Size = new System.Drawing.Size(228, 20);
+            this.txtStaffName.TabIndex = 5;
             // 
-            // gvStaff
+            // txtStaffMSNV
             // 
-            this.gvStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvStaff.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gvStaff.Location = new System.Drawing.Point(0, 0);
-            this.gvStaff.Name = "gvStaff";
-            this.gvStaff.Size = new System.Drawing.Size(459, 525);
-            this.gvStaff.TabIndex = 1;
-            this.gvStaff.Click += new System.EventHandler(this.gvStaff_Click);
+            this.txtStaffMSNV.Location = new System.Drawing.Point(126, 96);
+            this.txtStaffMSNV.Name = "txtStaffMSNV";
+            this.txtStaffMSNV.Size = new System.Drawing.Size(228, 20);
+            this.txtStaffMSNV.TabIndex = 4;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(64, 308);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(47, 16);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "Phone";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(62, 151);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(45, 16);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Name";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(63, 359);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(48, 16);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "CMND";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(60, 97);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 16);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "MSNV";
             // 
             // tabControl1
             // 
@@ -281,6 +311,83 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1073, 561);
             this.tabControl1.TabIndex = 3;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(408, 100);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(0, 16);
+            this.label9.TabIndex = 17;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(408, 155);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(0, 16);
+            this.label10.TabIndex = 18;
+            // 
+            // date
+            // 
+            this.date.AutoSize = true;
+            this.date.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.date.Location = new System.Drawing.Point(408, 214);
+            this.date.Name = "date";
+            this.date.Size = new System.Drawing.Size(0, 16);
+            this.date.TabIndex = 19;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(408, 267);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(47, 16);
+            this.label12.TabIndex = 20;
+            this.label12.Text = "MSNV";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(408, 312);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(47, 16);
+            this.label13.TabIndex = 21;
+            this.label13.Text = "MSNV";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(408, 365);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(47, 16);
+            this.label14.TabIndex = 22;
+            this.label14.Text = "MSNV";
+            // 
+            // name
+            // 
+            this.name.AutoSize = true;
+            this.name.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.name.Location = new System.Drawing.Point(408, 155);
+            this.name.Name = "name";
+            this.name.Size = new System.Drawing.Size(11, 16);
+            this.name.TabIndex = 23;
+            this.name.Text = " ";
+            // 
+            // msnv
+            // 
+            this.msnv.AutoSize = true;
+            this.msnv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.msnv.Location = new System.Drawing.Point(408, 97);
+            this.msnv.Name = "msnv";
+            this.msnv.Size = new System.Drawing.Size(11, 16);
+            this.msnv.TabIndex = 24;
+            this.msnv.Text = " ";
             // 
             // StaffView
             // 
@@ -297,9 +404,9 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gvStaff)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gvStaff)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -330,5 +437,14 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label msnv;
+        private System.Windows.Forms.Label name;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label date;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
     }
 }
