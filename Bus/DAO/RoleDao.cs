@@ -21,8 +21,8 @@ namespace Bus.DAO
         {
             RoleDTO dt = new RoleDTO();
 
-            dt.RoleID = row["roleId"].ToString();
-            dt.RoleName = row["RoleName"].ToString();
+            dt.RoleID = row["Role"].ToString();
+            dt.RoleName = row["NameRole"].ToString();
 
             return dt;
         }

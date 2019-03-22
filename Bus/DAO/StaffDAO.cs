@@ -25,11 +25,11 @@ namespace Bus.DAO
             {
                 SqlParameter[] sqlParameters = new SqlParameter[6];
                 sqlParameters[0] = new SqlParameter("@MSNV", SqlDbType.NVarChar) { Value = dto.MSNV };
-                sqlParameters[1] = new SqlParameter("@CMND", SqlDbType.NVarChar) { Value = dto.MSNV };
-                sqlParameters[2] = new SqlParameter("@Name", SqlDbType.NVarChar) { Value = dto.MSNV };
-                sqlParameters[3] = new SqlParameter("@DateOfBirth", SqlDbType.NVarChar) { Value = dto.MSNV };
-                sqlParameters[4] = new SqlParameter("@Phone", SqlDbType.NVarChar) { Value = dto.MSNV };
-                sqlParameters[5] = new SqlParameter("@Role", SqlDbType.NVarChar) { Value = dto.MSNV };
+                sqlParameters[1] = new SqlParameter("@CMND", SqlDbType.NVarChar) { Value = dto.CMND };
+                sqlParameters[2] = new SqlParameter("@Name", SqlDbType.NVarChar) { Value = dto.Name };
+                sqlParameters[3] = new SqlParameter("@DateOfBirth", SqlDbType.NVarChar) { Value = dto.Date };
+                sqlParameters[4] = new SqlParameter("@Phone", SqlDbType.NVarChar) { Value = dto.Phone };
+                sqlParameters[5] = new SqlParameter("@Role", SqlDbType.NVarChar) { Value = dto.RoleID };
                 check = conn.ExecuteInsertQuery(sql, sqlParameters);
 
             }
@@ -103,7 +103,7 @@ namespace Bus.DAO
         public bool Update(StaffDTO dto)
         {
             bool check = true;
-            string sql = "update staff  set  (CMND=@cmnd,Name=@name,DateOfBirth=@date,Phone=@phone,Role=@role) where msnv = @msnv";
+            string sql = "update staff  set  CMND=@cmnd,Name=@name,DateOfBirth=@date,Phone=@phone,Role=@role where msnv = @msnv";
             SqlParameter[] sqlParameters = new SqlParameter[6];
 
             sqlParameters[0] = new SqlParameter("@cmnd", SqlDbType.NVarChar) { Value = dto.CMND};

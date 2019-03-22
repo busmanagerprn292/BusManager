@@ -10,19 +10,35 @@ namespace Bus.BLL
 {
     class StaffBLL
     {
-        private readonly StaffDao dao;
+        private readonly StaffDao Sdao;
+        private readonly RoleDao Rdao;
 
         public StaffBLL()
         {
-            dao = new StaffDao();
+            Sdao = new StaffDao();
+            Rdao = new RoleDao();
         }
-
         public List<StaffDTO> getAll()
         {
-            return dao.GetAll();
+            return Sdao.GetAll();
+        }
+        public List<RoleDTO> getAllR()
+        {
+            return Rdao.GetAll();
+        }
+        public bool InsertStaff(StaffDTO dto)
+        {
+            return Sdao.Add(dto);
         }
 
+        public bool UpdateStaff(StaffDTO dto)
+        {
+            return Sdao.Update(dto);
+        }
+
+        public bool DeleteStaff(string id)
+        {
+            return Sdao.DeleteById(id);
+        }
     }
-
-
 }
