@@ -62,7 +62,13 @@ namespace Bus.View
             dgvOwner.DataSource = bll.GetOwnerList();
             dgvOwner.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
-
+        private void LoadListBus()
+        {
+            listBus.DataSource = null;
+            listBus.DataSource = _listBus;
+            listBus.DisplayMember = "BSX";
+            listBus.ValueMember = "Id";
+        }
         private void btnLoad_Click(object sender, EventArgs e)
         {
             LoadData();
@@ -193,9 +199,7 @@ namespace Bus.View
             txtAddress.Text = dgvOwner.Rows[index].Cells["Address"].Value.ToString();
             dtpDateOfBirth.Value = DateTime.Parse(dgvOwner.Rows[index].Cells["DateOfBirth"].Value.ToString());
             _listBus = bll.GetMyListBuses(txtId.Text);
-            listBus.DataSource = _listBus;
-            listBus.DisplayMember = "BSX";
-            listBus.ValueMember = "Id";
+            LoadListBus();
         }
 
         private void listBus_Click(object sender, EventArgs e)
@@ -212,7 +216,8 @@ namespace Bus.View
             }
             BusDetailOfOwner _detailBusForm = new BusDetailOfOwner(dto , _listBus , txtName.Text);
             _detailBusForm.ShowDialog();
-            
+            _listBus = _detailBusForm._listBus;
+            LoadListBus();
         }
     }
 }

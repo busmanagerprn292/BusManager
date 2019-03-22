@@ -14,7 +14,7 @@ namespace Bus.View
 {
     public partial class BusDetailOfOwner : Form
     {
-        private List<BusDTO> _listBus;
+        public List<BusDTO> _listBus { get; set; }
         private List<RouteDTO> _listRoute;
         private BusDTO dto;
         private string _ownerName;
@@ -41,6 +41,7 @@ namespace Bus.View
         }
         private void loadListBus()
         {
+            listBus.DataSource = null;
             listBus.DataSource = _listBus;
             listBus.DisplayMember = "BSX";
             listBus.ValueMember = "Id";
@@ -140,6 +141,11 @@ namespace Bus.View
         {
             txtTuyenDuong.Text = cbbRouteID.SelectedValue.ToString();
 
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
