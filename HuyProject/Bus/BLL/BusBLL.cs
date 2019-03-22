@@ -1,0 +1,62 @@
+﻿using Bus.DAO;
+using Bus.DTO;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Bus.BLL
+{
+    class BusBLL
+    {
+        private BusDAO dao;
+        public BusBLL()
+        {
+            dao = new BusDAO();
+        }
+        public List<BusDTO> GetOwnerList()
+        {
+            return dao.GetAll();
+        }
+        public BusDTO GetOwnerById(string id)
+        {
+            return dao.SearchById(id);
+        }
+        public void InsertBus(string id, string bsx, string brand, DateTime dateRegistration, string ownerId, string routeId)
+        {
+            try
+            {
+                BusDTO dto = new BusDTO { Id = id, Brand = brand, BSX = bsx, DateRegistration = dateRegistration, OwnerID = ownerId, RouteID = routeId };
+                dao.Add(dto);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public void UpdateBus(string id, string bsx, string brand, DateTime dateRegistration, string ownerId, string routeId)
+        {
+            try
+            {
+                BusDTO dto = new BusDTO { Id = id, Brand = brand, BSX = bsx, DateRegistration = dateRegistration, OwnerID = ownerId, RouteID = routeId };
+                dao.Update(dto);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public void DeleteBus(string id)
+        {
+            try
+            {
+                dao.DeleteById(id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+    }
+}
