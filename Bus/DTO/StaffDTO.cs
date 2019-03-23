@@ -14,6 +14,6 @@ namespace Bus.DTO
         public string Date{ get; set; }
         public string Phone { get; set; }
         public string RoleID { get; set; }
-        
+
     }
 }

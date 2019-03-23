@@ -60,6 +60,7 @@
     <Compile Include="DAO\StaffDAO.cs" />
     <Compile Include="DTO\BusDTO.cs" />
     <Compile Include="DTO\BusStationDTO.cs" />
+    <Compile Include="DTO\BusStationGridView.cs" />
     <Compile Include="DTO\OwnerDTO.cs" />
     <Compile Include="DTO\RoleDTO.cs" />
     <Compile Include="DTO\RouteDTO.cs" />

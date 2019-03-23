@@ -166,6 +166,10 @@ namespace Bus.View
                 string id = gvStaff.SelectedRows[0].Cells[0].Value.ToString();
                 var List = bll.getAll().Where(s => s.MSNV.Equals(id));
                 var St = List.ElementAt(0);
+                string a = St.Date.ToString();
+                string[] arrListStr = a.Split(new char[] { ' ' });
+                MessageBox.Show(arrListStr[1].ToString());
+
                 if (St != null)
                 {
                     txtStaffCMND.Text = St.CMND.ToString();
@@ -175,6 +179,7 @@ namespace Bus.View
                     cbStaffRole.SelectedValue = St.RoleID.ToString();
                     dtpStaffDateOfBirth.Text = St.Date.ToString();
                 }
+
             }
         }
 
@@ -190,7 +195,10 @@ namespace Bus.View
                     MSNV = txtStaffMSNV.Text,
                     Name = txtStaffName.Text,
                     Phone = txtStaffPhone.Text
-                }))
+                }
+
+               
+                ))
                 {
                     MessageBox.Show("Success");
                     LoadView();
@@ -205,12 +213,14 @@ namespace Bus.View
 
         private void btnStaffDelete_Click(object sender, EventArgs e)
         {
-            if (bll.DeleteStaff(txtStaffMSNV.Text))
-            {
-                MessageBox.Show("Successs");
-                LoadView();
-            }
-            else { MessageBox.Show("Error"); }
+            //if (bll.DeleteStaff(txtStaffMSNV.Text))
+            //{
+            //    MessageBox.Show("Successs");
+            //    LoadView();
+            //}
+            //else { MessageBox.Show("Error"); }
+
+            
         }
     }
 }
