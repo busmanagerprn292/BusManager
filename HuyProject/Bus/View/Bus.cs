@@ -16,8 +16,9 @@ namespace Bus.View
     {
         private BusBLL bll;
         private BusDTO main_busDto; //chua bus hien hanh
-        private OwnerDTO main_ownerDto; //chua owner cua bus hien hanh
         private List<BusStationDTO> main_scheduleDto; //chua owner cua bus hien hanh
+        private List<OwnerDTO> main_listOwner; //chua owner cua bus hien hanh
+        private List<RouteDTO> main_listRoute; //chua owner cua bus hien hanh
         public Bus()
         {
             InitializeComponent();
@@ -29,11 +30,39 @@ namespace Bus.View
         private void Bus_Load(object sender, EventArgs e)
         {
             LoadData();
+            LoadDataOwner();
+
+            //Get and load list Route
+            RouteBLL r_bll = new RouteBLL();
+            main_listRoute = r_bll.GetRouteList();
+            cbbRouteID.DataSource = main_listRoute;
+            cbbRouteID.DisplayMember = "Id";
+            cbbRouteID.ValueMember = "TuyenDuong";
+            txtTuyenDuong.Text = cbbRouteID.SelectedValue.ToString();
         }
+
+        /// <summary>
+        /// Load toan bo danh sach bus trong database lên
+        /// </summary>
         private void LoadData()
         {
             dgvBus.DataSource = bll.GetBusList();
         }
+        /// <summary>
+        /// Load DataSource form database
+        /// </summary>
+        private void LoadDataOwner()
+        {
+            main_listOwner = bll.GetOwnerList();
+
+            cbbOwner.DataSource = main_listOwner;
+            cbbOwner.DisplayMember = "Name";
+            cbbOwner.ValueMember = "Id";
+        }
+
+        /// <summary>
+        /// Load lich trinh cua Bus
+        /// </summary>
         private void LoadListSchedule()
         {
             dgvSchedule.DataSource = main_scheduleDto;
@@ -44,21 +73,23 @@ namespace Bus.View
 
         private void dgvBus_Click(object sender, EventArgs e)
         {
-                txtId.ReadOnly = true;
+            txtId.ReadOnly = true;
+            cbbOwner.Enabled = false;
             int index = dgvBus.CurrentRow.Index;
             txtId.Text = dgvBus.Rows[index].Cells["Id"].Value.ToString();
             txtBrand.Text = dgvBus.Rows[index].Cells["Brand"].Value.ToString();
             txtBSX.Text = dgvBus.Rows[index].Cells["BSX"].Value.ToString();
             dtpDateRegistration.Value = DateTime.Parse(dgvBus.Rows[index].Cells["DateRegistration"].Value.ToString());
+            cbbOwner.SelectedValue = dgvBus.Rows[index].Cells["OwnerID"].Value.ToString();
+            cbbRouteID.SelectedIndex = cbbRouteID.FindStringExact(dgvBus.Rows[index].Cells["RouteId"].Value.ToString());
+            txtTuyenDuong.Text = cbbRouteID.SelectedValue.ToString();
             try
             {
-                main_ownerDto = bll.GetOwnerById(dgvBus.Rows[index].Cells["OwnerId"].Value.ToString());
-                txtOwnerName.Text = main_ownerDto.Name;
                 main_scheduleDto = bll.SearchScheduleOfBusByBusId(txtId.Text);
                 foreach (var item in main_scheduleDto)
                 {
-                    item.DepartureTime = item.DepartureTime.Split(' ')[1];
-                    item.TimeBack = item.TimeBack.Split(' ')[1];
+                    item.DepartureTime = item.DepartureTime.Split(' ')[1] + " " + item.DepartureTime.Split(' ')[2];
+                    item.TimeBack = item.TimeBack.Split(' ')[1] + " " + item.TimeBack.Split(' ')[2];
                 }
                 LoadListSchedule();
             }
@@ -66,7 +97,7 @@ namespace Bus.View
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
@@ -76,6 +107,7 @@ namespace Bus.View
 
         private void btnNew_Click(object sender, EventArgs e)
         {
+            cbbOwner.Enabled = true;
             txtId.ReadOnly = false;
             txtId.Text = "";
             txtId.Focus();
@@ -87,7 +119,154 @@ namespace Bus.View
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            try
+            {
+                main_busDto = bll.GetBusById(txtSearch.Text);
+                if (main_busDto != null)
+                {
+                    dgvBus.DataSource = null;
+                    List<BusDTO> listBus = new List<BusDTO>();
+                    listBus.Add(main_busDto);
+                    dgvBus.DataSource = listBus;
+                }
+                else
+                {
+                    throw new Exception("Bus does not existed");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private bool KiemTraDuLieu()
+        {
+            bool check = true;
+            errorProvider1.Clear();
+            errorProvider2.Clear();
+            errorProvider3.Clear();
+            errorProvider4.Clear();
+            errorProvider5.Clear();
+            if (String.IsNullOrWhiteSpace(txtId.Text) || txtId.Text.Length != 6)
+            {
+                errorProvider1.SetError(txtId, "Please Fill With BUxxxx format");
+                check = false;
+            }
+            //if (String.IsNullOrWhiteSpace(txtOwnerName.Text))
+            //{
+            //    errorProvider2.SetError(txtOwnerName, "not allow null");
+            //    check = false;
+            //}
+            if (String.IsNullOrWhiteSpace(txtBSX.Text))
+            {
+                errorProvider3.SetError(txtBSX, "not allow null");
+                check = false;
+            }
+            if (String.IsNullOrWhiteSpace(txtBrand.Text))
+            {
+                errorProvider4.SetError(txtBrand, "not allow null");
+                check = false;
+            }
+            if (DateTime.Compare(dtpDateRegistration.Value, DateTime.Now) > 0)
+            {
+                errorProvider5.SetError(dtpDateRegistration, "Date Registration can not gather than current date");
+                check = false;
+            }
+            return check;
+        }
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (!txtId.ReadOnly)
+            {
+                if (KiemTraDuLieu())
+                {
+                    try
+                    {
+                        OwnerDTO od = (OwnerDTO)cbbOwner.SelectedItem;
+                        bll.InsertBus(txtId.Text, txtBSX.Text, txtBrand.Text, dtpDateRegistration.Value, od.Id, cbbRouteID.Text);
+                        LoadData();
+                        txtId.ReadOnly = true;
+                        cbbOwner.Enabled = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please click new before add");
+            }
+            
+        }
 
+        private void cbbRouteID_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            txtTuyenDuong.Text = cbbRouteID.SelectedValue.ToString();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (txtId.ReadOnly && !cbbOwner.Enabled)
+            {
+                if (KiemTraDuLieu())
+                {
+                    try
+                    {
+                        OwnerDTO od = (OwnerDTO)cbbOwner.SelectedItem;
+                        bll.UpdateBus(txtId.Text, txtBSX.Text, txtBrand.Text, dtpDateRegistration.Value, od.Id, cbbRouteID.Text);
+                        LoadData();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please choose bus before update");
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (txtId.ReadOnly)
+            {
+                try
+                {
+                    bll.DeleteBus(txtId.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please choose bus before Delete");
+            }
+        }
+
+        private void btnShowOwner_Click(object sender, EventArgs e)
+        {
+            OwnerDetailOfBus form = new OwnerDetailOfBus((OwnerDTO)cbbOwner.SelectedItem);
+            form.ShowDialog();
+            LoadDataOwner();
+            //OwnerDTO flag_owner_dto = null;
+            //foreach (var item in main_listOwner)
+            //{
+            //    if (item.Id.ToUpper().Equals(cbbOwner.SelectedValue.ToString().ToUpper()))
+            //    {
+            //        flag_owner_dto = item;
+            //    }
+            //}
+            ////main_listOwner.
+            //main_listOwner.Remove(flag_owner_dto);
+            //flag_owner_dto = form.dto;
+            //main_listOwner.Add(flag_owner_dto);
+            //LoadDataOwner();
         }
     }
 }

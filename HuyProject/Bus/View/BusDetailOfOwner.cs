@@ -22,12 +22,36 @@ namespace Bus.View
         {
             InitializeComponent();
         }
-        public BusDetailOfOwner(BusDTO dto , List<BusDTO> _listBus , string _ownerName)
+        public BusDetailOfOwner(BusDTO dto, List<BusDTO> _listBus, string _ownerName)
         {
             InitializeComponent();
-            this.dto= dto;
+            this.dto = dto;
             this._listBus = _listBus;
             this._ownerName = _ownerName;
+        }
+
+        private bool KiemTraDuLieu()
+        {
+            bool check = true;
+            errorProvider1.Clear();
+            errorProvider2.Clear();
+            errorProvider3.Clear();
+            if (String.IsNullOrWhiteSpace(txtBSX.Text))
+            {
+                errorProvider1.SetError(txtBSX, "not allow null");
+                check = false;
+            }
+            if (String.IsNullOrWhiteSpace(txtBrand.Text))
+            {
+                errorProvider2.SetError(txtBrand, "not allow null");
+                check = false;
+            }
+            if (DateTime.Compare(dtpDateRegistration.Value, DateTime.Now) > 0)
+            {
+                errorProvider3.SetError(dtpDateRegistration, "Date Registration can not gather than current date");
+                check = false;
+            }
+            return check;
         }
         private void FillBusDetail()
         {
@@ -37,7 +61,7 @@ namespace Bus.View
             dtpDateRegistration.Text = dto.DateRegistration.ToShortDateString();
             cbbRouteID.SelectedIndex = cbbRouteID.FindStringExact(dto.RouteID);
             txtTuyenDuong.Text = cbbRouteID.SelectedValue.ToString();
-            
+
         }
         private void loadListBus()
         {
@@ -66,35 +90,37 @@ namespace Bus.View
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            string id = lbId.Text;
-            string bsx = txtBSX.Text;
-            string brand = txtBrand.Text;
-            DateTime dateRegistration = dtpDateRegistration.Value;    // DateTime.Parse(dtpDateRegistration.Value.ToShortDateString());
-            string ownerId = dto.OwnerID;
-            string routeId = cbbRouteID.Text;
-            dto = new BusDTO() { Id = id, Brand = brand, BSX = bsx, DateRegistration = dateRegistration, OwnerID = ownerId, RouteID = routeId };
-            BusBLL bll = new BusBLL();
-            try
+            if (KiemTraDuLieu())
             {
-                bll.UpdateBus(id, bsx, brand, dateRegistration, ownerId, routeId);
-                BusDTO busflag = null;
-                foreach (var bus in _listBus)
+                string id = lbId.Text;
+                string bsx = txtBSX.Text;
+                string brand = txtBrand.Text;
+                DateTime dateRegistration = dtpDateRegistration.Value;    // DateTime.Parse(dtpDateRegistration.Value.ToShortDateString());
+                string ownerId = dto.OwnerID;
+                string routeId = cbbRouteID.Text;
+                dto = new BusDTO() { Id = id, Brand = brand, BSX = bsx, DateRegistration = dateRegistration, OwnerID = ownerId, RouteID = routeId };
+                BusBLL bll = new BusBLL();
+                try
                 {
-                    if (bus.Id.Equals(id))
+                    bll.UpdateBus(id, bsx, brand, dateRegistration, ownerId, routeId);
+                    BusDTO busflag = null;
+                    foreach (var bus in _listBus)
                     {
-                        busflag = bus;
+                        if (bus.Id.Equals(id))
+                        {
+                            busflag = bus;
+                        }
                     }
+                    _listBus.Remove(busflag);
+                    busflag = dto;
+                    _listBus.Add(busflag);
+                    loadListBus();
+                    FillBusDetail();
                 }
-                _listBus.Remove(busflag);
-                busflag = dto;
-                _listBus.Add(busflag);
-                //_listBus = null;
-                loadListBus();
-                FillBusDetail();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
