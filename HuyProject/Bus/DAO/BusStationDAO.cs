@@ -53,9 +53,9 @@ namespace Bus.DAO
             {
                 DataTable dt = conn.ExecuteSelectQuery(query, sqlParameters);
                 List<BusStationDTO> list = new List<BusStationDTO>();
-                if (dt.Rows.Count > 0)
+                foreach (DataRow r in dt.Rows)
                 {
-                    BusStationDTO dto = GetBusStationDTOFromDataRow(dt.Rows[0]);
+                    BusStationDTO dto = GetBusStationDTOFromDataRow(r);
                     list.Add(dto);
                 }
                 return list;

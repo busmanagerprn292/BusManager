@@ -40,15 +40,11 @@ namespace Bus.View
             dgvSchedule.Columns.Remove("ID");
             dgvSchedule.Columns.Remove("MSNVDRIVER");
             dgvSchedule.Columns.Remove("MSNVCAST");
-            dgvSchedule.Columns[1].DefaultCellStyle.Format = "H:mm:ss";
-            dgvSchedule.Columns[2].DefaultCellStyle.Format = "H:mm:ss";
-            dgvSchedule.Columns[3].DefaultCellStyle.Format = "H:mm:ss";
-            dgvSchedule.Columns[0].DefaultCellStyle.Format = "H:mm:ss";
         }
 
         private void dgvBus_Click(object sender, EventArgs e)
         {
-            txtId.ReadOnly = true;
+                txtId.ReadOnly = true;
             int index = dgvBus.CurrentRow.Index;
             txtId.Text = dgvBus.Rows[index].Cells["Id"].Value.ToString();
             txtBrand.Text = dgvBus.Rows[index].Cells["Brand"].Value.ToString();
@@ -59,6 +55,11 @@ namespace Bus.View
                 main_ownerDto = bll.GetOwnerById(dgvBus.Rows[index].Cells["OwnerId"].Value.ToString());
                 txtOwnerName.Text = main_ownerDto.Name;
                 main_scheduleDto = bll.SearchScheduleOfBusByBusId(txtId.Text);
+                foreach (var item in main_scheduleDto)
+                {
+                    item.DepartureTime = item.DepartureTime.Split(' ')[1];
+                    item.TimeBack = item.TimeBack.Split(' ')[1];
+                }
                 LoadListSchedule();
             }
             catch (Exception ex)
