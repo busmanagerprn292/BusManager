@@ -58,16 +58,16 @@ namespace Bus.BLL
                 throw ex;
             }
         }
-        public OwnerDTO GetOwnerById (string id)
-        {
-            OwnerDAO oDao = new OwnerDAO();
-            return oDao.SearchById(id);
-        }
 
         public List<BusStationDTO> SearchScheduleOfBusByBusId(string busId)
         {
             BusStationDAO bsDao = new BusStationDAO();
             return bsDao.SearchScheduleOfBusByBusId(busId);
+        }
+        public List<OwnerDTO> GetOwnerList()
+        {
+            OwnerDAO oDao = new OwnerDAO();
+            return oDao.GetAll();
         }
     }
 }

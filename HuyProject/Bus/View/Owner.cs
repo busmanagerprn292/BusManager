@@ -25,6 +25,10 @@ namespace Bus.View
         {
             bool check = true;
             errorProvider1.Clear();
+            errorProvider2.Clear();
+            errorProvider3.Clear();
+            errorProvider4.Clear();
+            errorProvider5.Clear();
             if (String.IsNullOrWhiteSpace(txtId.Text))
             {
                 errorProvider1.SetError(txtId, "Không được để trống");
@@ -48,6 +52,11 @@ namespace Bus.View
             if (String.IsNullOrWhiteSpace(txtAddress.Text))
             {
                 errorProvider5.SetError(txtAddress, "Không được để trống");
+                check = false;
+            }
+            if (DateTime.Compare(dtpDateOfBirth.Value, DateTime.Now) > 0)
+            {
+                errorProvider6.SetError(dtpDateOfBirth, "Date does not gather than current date");
                 check = false;
             }
             return check;
