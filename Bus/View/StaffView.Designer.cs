@@ -85,7 +85,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1065, 535);
+            this.tabPage1.Size = new System.Drawing.Size(1336, 675);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Staff";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -103,8 +103,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Size = new System.Drawing.Size(1055, 525);
-            this.splitContainer1.SplitterDistance = 459;
+            this.splitContainer1.Size = new System.Drawing.Size(1326, 665);
+            this.splitContainer1.SplitterDistance = 576;
             this.splitContainer1.TabIndex = 0;
             // 
             // gvStaff
@@ -113,7 +113,7 @@
             this.gvStaff.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gvStaff.Location = new System.Drawing.Point(0, 0);
             this.gvStaff.Name = "gvStaff";
-            this.gvStaff.Size = new System.Drawing.Size(459, 525);
+            this.gvStaff.Size = new System.Drawing.Size(576, 665);
             this.gvStaff.TabIndex = 1;
             this.gvStaff.Click += new System.EventHandler(this.gvStaff_Click);
             // 
@@ -144,7 +144,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(592, 525);
+            this.panel1.Size = new System.Drawing.Size(746, 665);
             this.panel1.TabIndex = 2;
             // 
             // txtStaffCMND
@@ -359,7 +359,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1073, 561);
+            this.tabControl1.Size = new System.Drawing.Size(1344, 701);
             this.tabControl1.TabIndex = 3;
             // 
             // contextMenuStrip1
@@ -371,7 +371,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1073, 561);
+            this.ClientSize = new System.Drawing.Size(1344, 701);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.Name = "StaffView";
