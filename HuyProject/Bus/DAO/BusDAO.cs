@@ -114,6 +114,41 @@ namespace Bus.DAO
             }
             return null;
         }
-        
+        public BusStationDTO GetDetailOfScheduleById(int scheduleId)
+        {
+            string query = "Select * From BusStation Where Id = @id";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@id", SqlDbType.Int);
+            sqlParameters[0].Value = scheduleId;
+
+            DataTable dt = conn.ExecuteSelectQuery(query, sqlParameters);
+            if (dt.Rows.Count > 0)
+            {
+                BusStationDTO dto = new BusStationDTO();
+                dto.ID = int.Parse(dt.Rows[0]["ID"].ToString());
+                dto.BusID = dt.Rows[0]["BusID"].ToString();
+                dto.MSNVDRIVER = dt.Rows[0]["MSNVDRIVER"].ToString();
+                dto.MSNVCAST = dt.Rows[0]["MSNVCAST"].ToString();
+                dto.DepartureTime =  dt.Rows[0]["DepartureTime"].ToString();
+                dto.TimeBack = dt.Rows[0]["TimeBack"].ToString();
+                dto.Status = dt.Rows[0]["Status"].ToString();
+                return dto;
+            }
+            return null;
+        }
+        public String GetRoleNameById (string roleId)
+        {
+            string query = "Select NameRole From Role Where Role = @id";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@id", SqlDbType.NVarChar);
+            sqlParameters[0].Value = roleId;
+
+            DataTable dt = conn.ExecuteSelectQuery(query, sqlParameters);
+            if (dt.Rows.Count > 0)
+            {
+                return dt.Rows[0]["NameRole"].ToString();
+            }
+            return null;
+        }
     }
 }

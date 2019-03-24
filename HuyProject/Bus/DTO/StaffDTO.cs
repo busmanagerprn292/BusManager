@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bus.DTO
 {
-    class StaffDTO
+    public class StaffDTO
     {
         public string MSNV { get; set; }
         public string CMND { get; set; }

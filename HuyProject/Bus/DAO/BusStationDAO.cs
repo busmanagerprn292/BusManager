@@ -25,7 +25,7 @@ namespace Bus.DAO
             dto.MSNVCAST = row["MSNVCAST"].ToString();
             dto.DepartureTime = row["DepartureTime"].ToString();
             dto.TimeBack = row["TimeBack"].ToString();
-            dto.Status = int.Parse(row["Status"].ToString());
+            dto.Status = row["Status"].ToString();
             return dto;
         }
         public bool Add(BusStationDAO dto)
@@ -71,7 +71,12 @@ namespace Bus.DAO
             throw new NotImplementedException();
         }
 
-        public BusStationDAO SearchById(object id)
+        public BusStationDTO SearchById(object id)
+        {
+            throw new NotImplementedException();
+        }
+
+        BusStationDAO IDAO<BusStationDAO>.SearchById(object id)
         {
             throw new NotImplementedException();
         }

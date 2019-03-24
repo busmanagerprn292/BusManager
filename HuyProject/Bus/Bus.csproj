@@ -63,7 +63,6 @@
     <Compile Include="DTO\OwnerDTO.cs" />
     <Compile Include="DTO\RoleDTO.cs" />
     <Compile Include="DTO\RouteDTO.cs" />
-    <Compile Include="DTO\ScheduleViewModelOnBus.cs" />
     <Compile Include="DTO\StaffDTO.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="View\Bus.cs">
@@ -104,11 +103,23 @@
     <Compile Include="View\Route.Designer.cs">
       <DependentUpon>Route.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ScheduleDetailOfBus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ScheduleDetailOfBus.Designer.cs">
+      <DependentUpon>ScheduleDetailOfBus.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Schudeling.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Schudeling.Designer.cs">
       <DependentUpon>Schudeling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\StaffDetailOfHuy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\StaffDetailOfHuy.Designer.cs">
+      <DependentUpon>StaffDetailOfHuy.cs</DependentUpon>
     </Compile>
     <Compile Include="View\StaffView.cs">
       <SubType>Form</SubType>
@@ -143,8 +154,14 @@
     <EmbeddedResource Include="View\Route.resx">
       <DependentUpon>Route.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\ScheduleDetailOfBus.resx">
+      <DependentUpon>ScheduleDetailOfBus.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Schudeling.resx">
       <DependentUpon>Schudeling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\StaffDetailOfHuy.resx">
+      <DependentUpon>StaffDetailOfHuy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\StaffView.resx">
       <DependentUpon>StaffView.cs</DependentUpon>
