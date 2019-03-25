@@ -50,6 +50,11 @@
     <Compile Include="BLL\OwnerBLL.cs" />
     <Compile Include="BLL\RouteBLL.cs" />
     <Compile Include="BLL\StaffBLL.cs" />
+    <Compile Include="BusManagerDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BusManagerDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DAO\BusDAO.cs" />
     <Compile Include="DAO\BusStationDAO.cs" />
     <Compile Include="DAO\DAO.cs" />
@@ -60,6 +65,7 @@
     <Compile Include="DAO\StaffDAO.cs" />
     <Compile Include="DTO\BusDTO.cs" />
     <Compile Include="DTO\BusStationDTO.cs" />
+    <Compile Include="DTO\BusStationGridView.cs" />
     <Compile Include="DTO\OwnerDTO.cs" />
     <Compile Include="DTO\RoleDTO.cs" />
     <Compile Include="DTO\RouteDTO.cs" />
@@ -175,6 +181,17 @@
     <EmbeddedResource Include="View\StaffView.resx">
       <DependentUpon>StaffView.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="BusManagerDataSet.xsc">
+      <DependentUpon>BusManagerDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="BusManagerDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BusManagerDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BusManagerDataSet.xss">
+      <DependentUpon>BusManagerDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

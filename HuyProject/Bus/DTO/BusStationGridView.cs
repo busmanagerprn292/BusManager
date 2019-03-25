@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bus.DTO
 {
-    public class BusStationDTO
+    class BusStationGridView
     {
         public int ID { get; set; }
         public string BusID { get; set; }
@@ -14,9 +14,14 @@ namespace Bus.DTO
         public string MSNVCAST { get; set; }
         public string DepartureTime { get; set; }
         public string TimeBack { get; set; }
-        public int Status { get; set; }
+        public string Status { get; set; }
     }
 
-
-
+    public enum Change
+    {
+        ready = 1,
+        late = 2,
+        finished = 3,
+        doing =4
+    }
 }
