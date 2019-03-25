@@ -1,4 +1,5 @@
 ﻿using Bus.BLL;
+using Bus.DAO;
 using Bus.DTO;
 using System;
 using System.Collections.Generic;
@@ -82,11 +83,18 @@ namespace Bus.View
                 listCasher.SelectedValue = main_casher_dto.MSNV;
                 listDriver.SelectedValue = main_driver_dto.MSNV;
             }
-            dgvSchedule.DataSource = bus_bll.SearchScheduleOfBusByBusId(main_bus_dto.Id);
+            var list = bus_bll.SearchScheduleOfBusByBusId(main_bus_dto.Id);
+            dgvSchedule.DataSource = list;
             dgvSchedule.Columns.Remove("MSNVDRIVER");
             dgvSchedule.Columns.Remove("MSNVCAST");
             dgvSchedule.Columns.Remove("BusID");
+            dgvSchedule.Columns.Remove("BXS");
             dgvSchedule.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            for (int i = 0; i < dgvSchedule.Rows.Count; i++)
+            {
+                dgvSchedule[3, i].Value = Enum.GetName(typeof(Change), int.Parse(list[i].Status)).ToString();
+
+            }
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
@@ -136,12 +144,16 @@ namespace Bus.View
                 string casher = listCasher.SelectedValue.ToString();
                 string departure_time = dtpDepatureTime.Value.ToString();
                 string back_time = dtpTimeBack.Value.ToString();
-                string status = "wait";
+                string status = "1";
                 try
                 {
-                    main_schedule_dto = new BusStationGridView() { BusID = busId, DepartureTime = departure_time, TimeBack = back_time, MSNVCAST = casher, MSNVDRIVER = driver, Status = status };
-                    bus_bll.AddBusStation(main_schedule_dto);
-                    LoadData();
+
+                    if (checkDateAccess())
+                    {
+                        main_schedule_dto = new BusStationGridView() { BusID = busId, DepartureTime = departure_time, TimeBack = back_time, MSNVCAST = casher, MSNVDRIVER = driver, Status = status };
+                        bus_bll.AddBusStation(main_schedule_dto);
+                        LoadData();
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -149,6 +161,34 @@ namespace Bus.View
                 }
 
             }
+        }
+
+        private bool checkDateAccess()
+        {
+            BusStationDAO dao = new BusStationDAO();
+            var list = dao.SearchScheduleOfBusByBusId(main_bus_dto.Id);
+            if (list != null)
+            {
+                DateTime DateGoPick = dtpDepatureTime.Value;
+                DateTime DateReturnPick = dtpTimeBack.Value;
+                bool check = false;
+                foreach (var item in list)
+                {
+                    DateTime TimeGo = Convert.ToDateTime(item.DepartureTime);
+                    DateTime TimeBack = Convert.ToDateTime(item.TimeBack);
+
+                    if ((DateGoPick - TimeBack).TotalMinutes > 0 || (TimeGo - DateReturnPick).TotalMinutes > 0)
+                    {
+                        errorProvider1.Clear();
+                    }
+                    else
+                    {
+                        errorProvider1.SetError(dtpDepatureTime, " có lịch rồi");
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -166,9 +206,12 @@ namespace Bus.View
                     string back_time = dtpTimeBack.Value.ToString();
                     try
                     {
-                        main_schedule_dto = new BusStationGridView() { ID = id, BusID = busId, DepartureTime = departure_time, TimeBack = back_time, MSNVCAST = casher, MSNVDRIVER = driver };
-                        bus_bll.UpdateBusStation(main_schedule_dto);
-                        LoadData();
+                        if (checkDateAccess())
+                        {
+                            main_schedule_dto = new BusStationGridView() { ID = id, BusID = busId, DepartureTime = departure_time, TimeBack = back_time, MSNVCAST = casher, MSNVDRIVER = driver };
+                            bus_bll.UpdateBusStation(main_schedule_dto);
+                            LoadData();
+                        }
                     }
                     catch (Exception ex)
                     {
