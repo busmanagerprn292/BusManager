@@ -99,6 +99,21 @@ namespace Bus.DAO
                 throw ex;
             }
         }
+        public bool DeleteAllScheduleOfBus(string busId)
+        {
+            string query = "Delete BusStation Where busId = @id";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@id", SqlDbType.NVarChar) { Value = busId };
+            try
+            {
+                conn.ExecuteDeleteQuery(query, sqlParameters);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public BusDTO SearchById(object id)
         {
@@ -149,6 +164,98 @@ namespace Bus.DAO
                 return dt.Rows[0]["NameRole"].ToString();
             }
             return null;
+        }
+        public List<BusStationDTO> SearchScheduleOfBusByBusId(string busId)
+        {
+            string query = "Select * from BusStation Where BusId = @id";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@id", SqlDbType.NVarChar) { Value = busId.ToString() };
+
+            try
+            {
+                DataTable dt = conn.ExecuteSelectQuery(query, sqlParameters);
+                List<BusStationDTO> list = new List<BusStationDTO>();
+                foreach (DataRow r in dt.Rows)
+                {
+                    BusStationDTO dto = GetBusStationDTOFromDataRow(r);
+                    list.Add(dto);
+                }
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        private BusStationDTO GetBusStationDTOFromDataRow(DataRow row)
+        {
+            BusStationDTO dto = new BusStationDTO();
+            dto.ID = int.Parse(row["ID"].ToString());
+            dto.BusID = row["BusID"].ToString();
+            dto.MSNVDRIVER = row["MSNVDRIVER"].ToString();
+            dto.MSNVCAST = row["MSNVCAST"].ToString();
+            dto.DepartureTime = row["DepartureTime"].ToString();
+            dto.TimeBack = row["TimeBack"].ToString();
+            dto.Status = row["Status"].ToString();
+            return dto;
+        }
+        public bool AddBusStation(BusStationDTO dto)
+        {
+            string query = "Insert into BusStation values(@busId,@MSNVDRIVER,@DepartureTime,@TimeBack,@MSNVCAST,@Status)";
+            SqlParameter[] sqlParameters = new SqlParameter[6];
+            //sqlParameters[0] = new SqlParameter("@id", SqlDbType.   ) { Value = dto.Id };
+            sqlParameters[0] = new SqlParameter("@busId", SqlDbType.NVarChar) { Value = dto.BusID };
+            sqlParameters[1] = new SqlParameter("@MSNVDRIVER", SqlDbType.NVarChar) { Value = dto.MSNVDRIVER };
+            sqlParameters[2] = new SqlParameter("@DepartureTime", SqlDbType.NVarChar) { Value = dto.DepartureTime};
+            sqlParameters[3] = new SqlParameter("@TimeBack", SqlDbType.NVarChar) { Value = dto.TimeBack };
+            sqlParameters[4] = new SqlParameter("@MSNVCAST", SqlDbType.NVarChar) { Value = dto.MSNVCAST };
+            sqlParameters[5] = new SqlParameter("@Status", SqlDbType.NVarChar) { Value = dto.Status };
+            try
+            {
+                conn.ExecuteInsertQuery(query, sqlParameters);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool DeleteBusStationById(int id)
+        {
+            string query = "Delete BusStation Where Id = @id";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@id", SqlDbType.Int) { Value = id };
+            try
+            {
+                conn.ExecuteDeleteQuery(query, sqlParameters);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public bool UpdateBusStation(BusStationDTO dto)
+        {
+            string query = "Update BusStation set BusId = @busId, MSNVDRIVER= @MSNVDRIVER, DepartureTime = @DepartureTime , TimeBack = @TimeBack , MSNVCAST = @MSNVCAST Where id = @id";
+            SqlParameter[] sqlParameters = new SqlParameter[6];
+            sqlParameters[0] = new SqlParameter("@id", SqlDbType.Int) { Value = dto.ID };
+            sqlParameters[1] = new SqlParameter("@busId", SqlDbType.NVarChar) { Value = dto.BusID };
+            sqlParameters[2] = new SqlParameter("@MSNVDRIVER", SqlDbType.NVarChar) { Value = dto.MSNVDRIVER };
+            sqlParameters[3] = new SqlParameter("@DepartureTime", SqlDbType.NVarChar) { Value = dto.DepartureTime };
+            sqlParameters[4] = new SqlParameter("@TimeBack", SqlDbType.NVarChar) { Value = dto.TimeBack };
+            sqlParameters[5] = new SqlParameter("@MSNVCAST", SqlDbType.NVarChar) { Value = dto.MSNVCAST };
+            //sqlParameters[5] = new SqlParameter("@Status", SqlDbType.NVarChar) { Value = dto.Status };
+            try
+            {
+                conn.ExecuteUpdateQuery(query, sqlParameters);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

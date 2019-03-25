@@ -139,11 +139,20 @@ namespace Bus.View
                         busflag = bus;
                     }
                 }
-                _listBus.Remove(busflag);
+                _listBus.Remove((BusDTO)listBus.SelectedItem);
                 loadListBus();
-                listBus.SelectedIndex = 0;
-                dto = _listBus[0];
-                FillBusDetail();
+                if(_listBus.Count != 0)
+                {
+                    listBus.SelectedIndex = 0;
+                    dto = _listBus[0];
+                    FillBusDetail();
+                }
+                else
+                {
+                    MessageBox.Show("Delete successful");
+                    this.Close();
+                }
+                
             }
             catch (Exception ex)
             {

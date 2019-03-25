@@ -31,7 +31,7 @@ namespace Bus.View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public ScheduleDetailOfBus(BusDTO dto, RouteDTO rDto, BusStationDTO bDto, StaffDTO casher , StaffDTO driver)
+        public ScheduleDetailOfBus(BusDTO dto, RouteDTO rDto, BusStationDTO bDto, StaffDTO casher, StaffDTO driver)
         {
             InitializeComponent();
             main_bus_dto = dto;
@@ -57,7 +57,7 @@ namespace Bus.View
             bus_bll = new BusBLL();
             staff_form = null;
         }
-      
+
         private void ScheduleDetailOfBus_Load(object sender, EventArgs e)
         {
             listCasher.DataSource = main_staff_bll.getAll();
@@ -75,14 +75,13 @@ namespace Bus.View
             lbTuyenDuong.Text = main_route_dto.TuyenDuong;
             //dtpDepatureTime.Text = main_schedule_dto.DepartureTime.Split(' ')[1] + " " + main_schedule_dto.DepartureTime.Split(' ')[2];
             //dtpTimeBack.Text = main_schedule_dto.TimeBack.Split(' ')[1] + " " + main_schedule_dto.TimeBack.Split(' ')[2];
-            if(main_schedule_dto !=null && main_casher_dto !=null && main_driver_dto != null)
+            if (main_schedule_dto != null && main_casher_dto != null && main_driver_dto != null)
             {
                 dtpDepatureTime.Value = DateTime.Parse(main_schedule_dto.DepartureTime);
                 dtpTimeBack.Value = DateTime.Parse(main_schedule_dto.TimeBack);
                 listCasher.SelectedValue = main_casher_dto.MSNV;
                 listDriver.SelectedValue = main_driver_dto.MSNV;
             }
-            
             dgvSchedule.DataSource = bus_bll.SearchScheduleOfBusByBusId(main_bus_dto.Id);
             dgvSchedule.Columns.Remove("MSNVDRIVER");
             dgvSchedule.Columns.Remove("MSNVCAST");
@@ -92,7 +91,7 @@ namespace Bus.View
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            LoadData();   
+            LoadData();
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -105,6 +104,8 @@ namespace Bus.View
 
         private bool KiemTraDuLieu()
         {
+            errorProvider1.Clear();
+            errorProvider2.Clear();
             bool check = true;
             if (DateTime.Compare(dtpDepatureTime.Value, DateTime.Now) < 0)
             {
@@ -118,9 +119,9 @@ namespace Bus.View
             }
             else
             {
-                if (DateTime.Compare(dtpTimeBack.Value,dtpDepatureTime.Value) > 0)
+                if (DateTime.Compare(dtpTimeBack.Value, dtpDepatureTime.Value) < 0)
                 {
-                    errorProvider2.SetError(dtpTimeBack, "Date can not gather than Depature Time");
+                    errorProvider2.SetError(dtpTimeBack, "Datetime must gather than Depature Time");
                     check = false;
                 }
             }
@@ -131,14 +132,16 @@ namespace Bus.View
             if (KiemTraDuLieu())
             {
                 string busId = main_bus_dto.Id;
-                string driver = main_driver_dto.MSNV;
-                string casher = main_casher_dto.MSNV;
+                string driver = listDriver.SelectedValue.ToString();
+                string casher = listCasher.SelectedValue.ToString();
                 string departure_time = dtpDepatureTime.Value.ToString();
                 string back_time = dtpTimeBack.Value.ToString();
-                string status = "Waiting";
+                string status = "wait";
                 try
                 {
-
+                    main_schedule_dto = new BusStationDTO() { BusID = busId, DepartureTime = departure_time, TimeBack = back_time, MSNVCAST = casher, MSNVDRIVER = driver, Status = status };
+                    bus_bll.AddBusStation(main_schedule_dto);
+                    LoadData();
                 }
                 catch (Exception ex)
                 {
@@ -150,22 +153,32 @@ namespace Bus.View
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (KiemTraDuLieu())
+            if (main_schedule_dto != null)
             {
-                string busId = main_bus_dto.Id;
-                string driver = main_driver_dto.MSNV;
-                string casher = main_casher_dto.MSNV;
-                string departure_time = dtpDepatureTime.Value.ToString();
-                string back_time = dtpTimeBack.Value.ToString();
-                string status = "Waiting";
-                try
+                if (KiemTraDuLieu())
                 {
 
+                    int id = int.Parse(dgvSchedule.Rows[dgvSchedule.CurrentRow.Index].Cells["ID"].Value.ToString());
+                    string busId = main_bus_dto.Id;
+                    string driver = listDriver.SelectedValue.ToString();
+                    string casher = listCasher.SelectedValue.ToString();
+                    string departure_time = dtpDepatureTime.Value.ToString();
+                    string back_time = dtpTimeBack.Value.ToString();
+                    try
+                    {
+                        main_schedule_dto = new BusStationDTO() { ID = id, BusID = busId, DepartureTime = departure_time, TimeBack = back_time, MSNVCAST = casher, MSNVDRIVER = driver };
+                        bus_bll.UpdateBusStation(main_schedule_dto);
+                        LoadData();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+            }
+            else
+            {
+                MessageBox.Show("Please choose scheduling before Update");
             }
         }
 
@@ -173,7 +186,16 @@ namespace Bus.View
         {
             try
             {
-
+                if (main_schedule_dto != null)
+                {
+                    bus_bll.DeleteBusStationById(main_schedule_dto.ID);
+                    main_schedule_dto = null;
+                    LoadData();
+                }
+                else
+                {
+                    MessageBox.Show("Please choose schedule before delete!");
+                }
             }
             catch (Exception ex)
             {
@@ -193,7 +215,14 @@ namespace Bus.View
 
         private void listDriver_Click(object sender, EventArgs e)
         {
-            if(staff_form == null)
+            if (staff_form != null)
+            {
+                if (staff_form.IsDisposed)
+                {
+                    staff_form = null;
+                }
+            }
+            if (staff_form == null)
             {
                 staff_form = new StaffDetailOfHuy();
                 staff_form.main_staff_dto = (StaffDTO)listDriver.SelectedItem;
@@ -209,6 +238,13 @@ namespace Bus.View
 
         private void listCasher_Click(object sender, EventArgs e)
         {
+            if (staff_form != null)
+            {
+                if (staff_form.IsDisposed)
+                {
+                    staff_form = null;
+                }
+            }
             if (staff_form == null)
             {
                 staff_form = new StaffDetailOfHuy();
@@ -221,6 +257,27 @@ namespace Bus.View
                 staff_form.main_staff_dto = (StaffDTO)listCasher.SelectedItem;
                 staff_form.LoadData();
             }
+        }
+
+        private void btnShowStaffDetail_Click(object sender, EventArgs e)
+        {
+            staff_form.Show();
+        }
+
+        private void ScheduleDetailOfBus_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (staff_form != null)
+            {
+                if (!staff_form.IsDisposed)
+                {
+                    staff_form.Close();
+                }
+            }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -36,5 +36,10 @@ namespace Bus.View
             txtPhone.Text = main_staff_dto.Phone;
             txtCMND.Text = main_staff_dto.CMND;
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

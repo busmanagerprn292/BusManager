@@ -234,6 +234,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.label2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "OwnerDetailOfBus";
             this.Text = "OwnerDetailOfBus";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

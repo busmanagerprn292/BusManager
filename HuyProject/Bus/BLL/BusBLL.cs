@@ -51,6 +51,7 @@ namespace Bus.BLL
         {
             try
             {
+                dao.DeleteAllScheduleOfBus(id);
                 dao.DeleteById(id);
             }
             catch (Exception ex)
@@ -59,23 +60,90 @@ namespace Bus.BLL
             }
         }
 
-        public List<BusStationDTO> SearchScheduleOfBusByBusId(string busId)
-        {
-            BusStationDAO bsDao = new BusStationDAO();
-            return bsDao.SearchScheduleOfBusByBusId(busId);
-        }
         public List<OwnerDTO> GetOwnerList()
         {
-            OwnerDAO oDao = new OwnerDAO();
-            return oDao.GetAll();
+            try
+            {
+                OwnerDAO oDao = new OwnerDAO();
+                return oDao.GetAll();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
         public BusStationDTO GetDetailOfScheduleById(int id)
         {
-            return dao.GetDetailOfScheduleById(id);
+            try
+            {
+                return dao.GetDetailOfScheduleById(id);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
         public string GetRoleNameById(string RoleId)
         {
-            return dao.GetRoleNameById(RoleId);
+            try
+            {
+                return dao.GetRoleNameById(RoleId);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public List<BusStationDTO> SearchScheduleOfBusByBusId(string busId)
+        {
+            try
+            {
+                return dao.SearchScheduleOfBusByBusId(busId);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public void AddBusStation(BusStationDTO dto)
+        {
+            try
+            {
+                dao.AddBusStation(dto);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public void DeleteBusStationById(int id)
+        {
+            try
+            {
+                dao.DeleteBusStationById(id);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public void UpdateBusStation(BusStationDTO dto)
+        {
+            try
+            {
+                dao.UpdateBusStation(dto);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }
