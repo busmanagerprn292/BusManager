@@ -91,12 +91,13 @@ namespace Bus.DAO
                 throw ex;
             }
         }
-        public bool UpdateStatus(int busid,int status )
+
+        public bool UpdateStatus(int busid,string status )
         {
             string query = "update BusStation set status = @status where id = @id ";
             SqlParameter[] sqlParameters = new SqlParameter[2];
 
-            sqlParameters[0] = new SqlParameter("@status", SqlDbType.Int) { Value = status };
+            sqlParameters[0] = new SqlParameter("@status", SqlDbType.NVarChar) { Value = status };
             sqlParameters[1] = new SqlParameter("@id", SqlDbType.Int) { Value = busid };
             try
             {
@@ -131,6 +132,7 @@ namespace Bus.DAO
                 throw ex;
             }
         }
+
         public bool Update(BusStationDTO dto)
         {
             throw new NotImplementedException();

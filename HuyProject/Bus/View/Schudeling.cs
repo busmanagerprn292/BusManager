@@ -206,15 +206,18 @@ namespace Bus.View
 
 
             list = dao.GetAllBus();
+            var bxs = bus.GetBusList();
             List<BusStationGridView> listView = new List<BusStationGridView>();
 
             if (list != null)
             {
                 foreach (var i in list)
                 {
+                    var thisBus = bxs.Where(a => a.Id == i.BusID).ToList();
                     listView.Add(new BusStationGridView()
                     {
                         BusID = i.BusID,
+                       BXS = thisBus[0].BSX,
                         DepartureTime = i.DepartureTime,
                         ID = i.ID,
                         MSNVCAST = i.MSNVCAST,
@@ -251,7 +254,7 @@ namespace Bus.View
                     string a = Convert.ToString(tblViewBus.Rows[i].Cells["status"].Value);
                     if (a.Equals("finished")==false)
                     {
-                        dao.UpdateStatus(list[i].ID, 3);
+                        dao.UpdateStatus(list[i].ID,"3");
                         LoadDataGridView();
                     }
                 }
@@ -263,7 +266,7 @@ namespace Bus.View
                     if (a.Equals("ready") == false)
                     {
                         LoadDataGridView();
-                        dao.UpdateStatus(list[i].ID, 1);
+                        dao.UpdateStatus(list[i].ID, "1");
                     }
                 }
                 else
@@ -271,7 +274,7 @@ namespace Bus.View
                     tblViewBus[6, i].Value = Enum.GetName(typeof(Change), 4).ToString();
                     if (count%10==0)
                     {
-                        dao.UpdateStatus(list[i].ID, 4);
+                        dao.UpdateStatus(list[i].ID, "4");
                         LoadDataGridView();
                         count++;
                     }
