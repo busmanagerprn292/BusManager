@@ -92,7 +92,7 @@ namespace Bus.DAO
             }
         }
 
-        public bool UpdateStatus(int busid,int status )
+        public bool UpdateStatus(int busid,string status )
         {
             string query = "update BusStation set status = @status where id = @id ";
             SqlParameter[] sqlParameters = new SqlParameter[2];
