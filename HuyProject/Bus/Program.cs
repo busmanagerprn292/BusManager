@@ -17,7 +17,7 @@ namespace Bus
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Bus.View.Bus());
+            Application.Run(new Bus.View.MainForm());
         }
     }
 }

@@ -280,6 +280,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.listBus);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "BusDetailOfOwner";
             this.Text = "BusDetailOfOwner";
             this.Load += new System.EventHandler(this.BusDetailOfOwner_Load);

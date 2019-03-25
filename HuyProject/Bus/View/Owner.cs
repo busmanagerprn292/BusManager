@@ -15,6 +15,7 @@ namespace Bus.View
     public partial class Owner : Form
     {
         private OwnerBLL bll;
+        private OwnerDTO main_owner_dto;
         private List<BusDTO> _listBus;
         public Owner()
         {
@@ -29,9 +30,9 @@ namespace Bus.View
             errorProvider3.Clear();
             errorProvider4.Clear();
             errorProvider5.Clear();
-            if (String.IsNullOrWhiteSpace(txtId.Text))
+            if (String.IsNullOrWhiteSpace(txtId.Text) || txtId.Text.Split(' ')[0].Length != 6)
             {
-                errorProvider1.SetError(txtId, "Không được để trống");
+                errorProvider1.SetError(txtId, "format OWxxxx 'x' is digit");
                 check = false;
             }
             if (String.IsNullOrWhiteSpace(txtName.Text))
@@ -121,24 +122,23 @@ namespace Bus.View
             {
                 if (KiemTraDuLieu())
                 {
-                    //MessageBox.Show(dtpDateOfBirth.Value.ToShortDateString());
-                    //dtpDateOfBirth.Value = DateTime.Parse("1/18/1970");
                     string id = txtId.Text;
                     string name = txtName.Text;
                     string phone = txtPhone.Text;
-                    DateTime dob = dtpDateOfBirth.Value;//DateTime.Parse(dtpDateOfBirth.Value.ToShortDateString());
+                    DateTime dob = dtpDateOfBirth.Value;
                     string cmnd = txtCMND.Text;
                     string address = txtAddress.Text;
                     try
                     {
                         bll.InsertOwner(id, name, phone, dob, cmnd, address);
+                        main_owner_dto = new OwnerDTO() { Id = id, Name = name, Phone = phone, DateOfBirth = dob, CMND = cmnd, Address = address };
                         LoadData();
+                        txtId.ReadOnly = true;
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
-                    //MessageBox.Show(dob.ToShortDateString());
                 }
             }
             else
@@ -162,6 +162,7 @@ namespace Bus.View
                     try
                     {
                         bll.UpdateOwner(id, name, phone, dob, cmnd, address);
+                        main_owner_dto = new OwnerDTO() { Id = id, Name = name, Phone = phone, DateOfBirth = dob, CMND = cmnd, Address = address };
                         LoadData();
                     }
                     catch (Exception ex)
@@ -184,6 +185,7 @@ namespace Bus.View
                 try
                 {
                     bll.DeleteOwner(id);
+                    main_owner_dto = null;
                     LoadData();
                 }
                 catch (Exception ex)
@@ -208,25 +210,50 @@ namespace Bus.View
             txtAddress.Text = dgvOwner.Rows[index].Cells["Address"].Value.ToString();
             dtpDateOfBirth.Value = DateTime.Parse(dgvOwner.Rows[index].Cells["DateOfBirth"].Value.ToString());
             _listBus = bll.GetMyListBuses(txtId.Text);
+            main_owner_dto = new OwnerDTO() { Id = txtId.Text, Name = txtName.Text, Phone = txtPhone.Text, DateOfBirth = dtpDateOfBirth.Value , CMND = txtCMND.Text, Address = txtAddress.Text };
             LoadListBus();
         }
 
         private void listBus_Click(object sender, EventArgs e)
         {
-            var index = listBus.SelectedValue;
-            //MessageBox.Show(index.ToString());
-            BusDTO dto = null;
-            foreach (var bus in _listBus)
+            if(_listBus != null)
             {
-                if (bus.Id.Equals(index))
+                if (listBus.SelectedItem != null)
                 {
-                    dto = bus;
+                    try
+                    {
+                        BusDetailOfOwner _detailBusForm = new BusDetailOfOwner((BusDTO)listBus.SelectedItem, _listBus, txtName.Text);
+                        _detailBusForm.ShowDialog();
+                        _listBus = bll.GetMyListBuses(txtId.Text);
+                        LoadListBus();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
             }
-            BusDetailOfOwner _detailBusForm = new BusDetailOfOwner(dto , _listBus , txtName.Text);
-            _detailBusForm.ShowDialog();
-            _listBus = _detailBusForm._listBus;
-            LoadListBus();
+        }
+
+        private void btnAddBus_Click(object sender, EventArgs e)
+        {
+            if(main_owner_dto != null)
+            {
+                BusViewToAddForOwner form = new BusViewToAddForOwner(main_owner_dto);
+                form.ShowDialog();
+                _listBus = bll.GetMyListBuses(txtId.Text);
+                LoadData();
+                LoadListBus();
+            }
+            else
+            {
+                MessageBox.Show("Please Choose Owner before add!");
+            }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -24,14 +24,9 @@ namespace Bus.View
         {
             bool check = true;
             errorProvider1.Clear();
-            if (String.IsNullOrWhiteSpace(txtID.Text))
-            {
-                errorProvider1.SetError(txtID, "Không được để trống");
-                check = false;
-            }
             if (String.IsNullOrWhiteSpace(txtTuyenDuong.Text))
             {
-                errorProvider2.SetError(txtTuyenDuong, "Không được để trống");
+                errorProvider1.SetError(txtTuyenDuong, "Không được để trống");
                 check = false;
             }
             return check;
@@ -124,14 +119,25 @@ namespace Bus.View
         {
             if (!txtID.ReadOnly)
             {
-                RouteDTO dto = bll.GetRouteById(int.Parse(txtID.Text));
-                if (dto != null)
+                if (!String.IsNullOrWhiteSpace(txtID.Text))
                 {
-                    txtTuyenDuong.Text = dto.TuyenDuong;
-                }
-                else
-                {
-                    MessageBox.Show("Route does not exist!");
+                    try
+                    {
+                        RouteDTO dto = bll.GetRouteById(int.Parse(txtID.Text));
+                        if (dto != null)
+                        {
+                            txtTuyenDuong.Text = dto.TuyenDuong;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Route does not exist!");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    
                 }
             }
             else
@@ -153,6 +159,11 @@ namespace Bus.View
             int index = gvRouteList.CurrentRow.Index;
             txtID.Text = gvRouteList.Rows[index].Cells["Id"].Value.ToString();
             txtTuyenDuong.Text = gvRouteList.Rows[index].Cells["TuyenDuong"].Value.ToString();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -75,7 +75,7 @@ namespace Bus.DAO
             catch (SqlException e)
             {
                 Trace.TraceError(e.Message);
-                return false;
+                throw e;
             }
             finally
             {
@@ -122,7 +122,6 @@ namespace Bus.DAO
             {
                 Trace.TraceError(e.Message);
                 throw e;
-                return false;
             }
             finally
             {

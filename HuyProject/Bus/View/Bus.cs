@@ -105,9 +105,10 @@ namespace Bus.View
                 {
                     item.DepartureTime = item.DepartureTime.Split(' ')[1] + " " + item.DepartureTime.Split(' ')[2];
                     item.TimeBack = item.TimeBack.Split(' ')[1] + " " + item.TimeBack.Split(' ')[2];
-                    UpdateMainBusDto();
                 }
                 LoadListSchedule();
+                UpdateMainBusDto();
+
             }
             catch (Exception ex)
             {
@@ -163,7 +164,7 @@ namespace Bus.View
             errorProvider3.Clear();
             errorProvider4.Clear();
             errorProvider5.Clear();
-            if (String.IsNullOrWhiteSpace(txtId.Text) || txtId.Text.Length != 6)
+            if (String.IsNullOrWhiteSpace(txtId.Text) || txtId.Text.Split(' ')[0].Length != 6)
             {
                 errorProvider1.SetError(txtId, "Please Fill With BUxxxx format");
                 check = false;
@@ -254,8 +255,12 @@ namespace Bus.View
             {
                 try
                 {
-                    bll.DeleteBus(txtId.Text);
-                    main_busDto = null;
+                    if (MessageBox.Show("Delete Bus will delete all Schedule of Bus? (Y/N)", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        bll.DeleteBus(txtId.Text);
+                        main_busDto = null;
+                        LoadData();
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -317,8 +322,18 @@ namespace Bus.View
                 ScheduleDetailOfBus form = new ScheduleDetailOfBus(main_busDto, (RouteDTO)cbbRouteID.SelectedItem , schedule_dto , driver, casher);
                 form.ShowDialog();
                 main_scheduleDto = bll.SearchScheduleOfBusByBusId(txtId.Text);
+                foreach (var item in main_scheduleDto)
+                {
+                    item.DepartureTime = item.DepartureTime.Split(' ')[1] + " " + item.DepartureTime.Split(' ')[2];
+                    item.TimeBack = item.TimeBack.Split(' ')[1] + " " + item.TimeBack.Split(' ')[2];
+                }
                 LoadListSchedule();
             }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

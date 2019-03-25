@@ -43,28 +43,7 @@ namespace Bus.DAO
             throw new NotImplementedException();
         }
 
-        public List<BusStationDTO> SearchScheduleOfBusByBusId(string busId)
-        {
-            string query = "Select * from BusStation Where BusId = @id";
-            SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@id", SqlDbType.NVarChar) { Value = busId.ToString() };
-
-            try
-            {
-                DataTable dt = conn.ExecuteSelectQuery(query, sqlParameters);
-                List<BusStationDTO> list = new List<BusStationDTO>();
-                foreach (DataRow r in dt.Rows)
-                {
-                    BusStationDTO dto = GetBusStationDTOFromDataRow(r);
-                    list.Add(dto);
-                }
-                return list;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        
 
         public bool Update(BusStationDAO dto)
         {
