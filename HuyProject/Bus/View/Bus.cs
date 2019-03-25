@@ -16,7 +16,7 @@ namespace Bus.View
     {
         private BusBLL bll;
         private BusDTO main_busDto; //chua bus hien hanh
-        private List<BusStationDTO> main_scheduleDto; //chua owner cua bus hien hanh
+        private List<BusStationGridView> main_scheduleDto; //chua owner cua bus hien hanh
         private List<OwnerDTO> main_listOwner; //chua owner cua bus hien hanh
         private List<RouteDTO> main_listRoute; //chua owner cua bus hien hanh
         public Bus()
@@ -316,7 +316,7 @@ namespace Bus.View
             {
                 StaffBLL sBll = new StaffBLL();
                 int index = dgvSchedule.CurrentRow.Index;
-                BusStationDTO schedule_dto = bll.GetDetailOfScheduleById(int.Parse(dgvSchedule.Rows[index].Cells["Id"].Value.ToString()));
+                BusStationGridView schedule_dto = bll.GetDetailOfScheduleById(int.Parse(dgvSchedule.Rows[index].Cells["Id"].Value.ToString()));
                 StaffDTO driver = sBll.SearchStaffById(schedule_dto.MSNVDRIVER);
                 StaffDTO casher = sBll.SearchStaffById(schedule_dto.MSNVCAST);
                 ScheduleDetailOfBus form = new ScheduleDetailOfBus(main_busDto, (RouteDTO)cbbRouteID.SelectedItem , schedule_dto , driver, casher);

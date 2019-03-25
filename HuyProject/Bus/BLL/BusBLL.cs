@@ -73,7 +73,7 @@ namespace Bus.BLL
                 throw ex;
             }
         }
-        public BusStationDTO GetDetailOfScheduleById(int id)
+        public BusStationGridView GetDetailOfScheduleById(int id)
         {
             try
             {
@@ -97,7 +97,7 @@ namespace Bus.BLL
                 throw ex;
             }
         }
-        public List<BusStationDTO> SearchScheduleOfBusByBusId(string busId)
+        public List<BusStationGridView> SearchScheduleOfBusByBusId(string busId)
         {
             try
             {
@@ -109,7 +109,7 @@ namespace Bus.BLL
                 throw ex;
             }
         }
-        public void AddBusStation(BusStationDTO dto)
+        public void AddBusStation(BusStationGridView dto)
         {
             try
             {
@@ -133,7 +133,7 @@ namespace Bus.BLL
                 throw ex;
             }
         }
-        public void UpdateBusStation(BusStationDTO dto)
+        public void UpdateBusStation(BusStationGridView dto)
         {
             try
             {

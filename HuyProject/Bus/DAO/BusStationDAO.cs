@@ -52,8 +52,6 @@ namespace Bus.DAO
             }
         }
 
-        //public List<>
-
         public bool DeleteById(object id)
         {
             string query = "delete from BusStation  where id = @id ";
@@ -94,8 +92,7 @@ namespace Bus.DAO
             }
         }
 
-
-        public bool UpdateStatus(int busid,string status )
+        public bool UpdateStatus(int busid,int status )
         {
             string query = "update BusStation set status = @status where id = @id ";
             SqlParameter[] sqlParameters = new SqlParameter[2];

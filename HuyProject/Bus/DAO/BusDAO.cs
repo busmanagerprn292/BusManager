@@ -130,7 +130,7 @@ namespace Bus.DAO
             }
             return null;
         }
-        public BusStationDTO GetDetailOfScheduleById(int scheduleId)
+        public BusStationGridView GetDetailOfScheduleById(int scheduleId)
         {
             string query = "Select * From BusStation Where Id = @id";
             SqlParameter[] sqlParameters = new SqlParameter[1];
@@ -140,7 +140,7 @@ namespace Bus.DAO
             DataTable dt = conn.ExecuteSelectQuery(query, sqlParameters);
             if (dt.Rows.Count > 0)
             {
-                BusStationDTO dto = new BusStationDTO();
+                BusStationGridView dto = new BusStationGridView();
                 dto.ID = int.Parse(dt.Rows[0]["ID"].ToString());
                 dto.BusID = dt.Rows[0]["BusID"].ToString();
                 dto.MSNVDRIVER = dt.Rows[0]["MSNVDRIVER"].ToString();
@@ -166,7 +166,7 @@ namespace Bus.DAO
             }
             return null;
         }
-        public List<BusStationDTO> SearchScheduleOfBusByBusId(string busId)
+        public List<BusStationGridView> SearchScheduleOfBusByBusId(string busId)
         {
             string query = "Select * from BusStation Where BusId = @id";
             SqlParameter[] sqlParameters = new SqlParameter[1];
@@ -175,10 +175,10 @@ namespace Bus.DAO
             try
             {
                 DataTable dt = conn.ExecuteSelectQuery(query, sqlParameters);
-                List<BusStationDTO> list = new List<BusStationDTO>();
+                List<BusStationGridView> list = new List<BusStationGridView>();
                 foreach (DataRow r in dt.Rows)
                 {
-                    BusStationDTO dto = GetBusStationDTOFromDataRow(r);
+                    BusStationGridView dto = GetBusStationDTOFromDataRow(r);
                     list.Add(dto);
                 }
                 return list;
@@ -188,9 +188,9 @@ namespace Bus.DAO
                 throw ex;
             }
         }
-        private BusStationDTO GetBusStationDTOFromDataRow(DataRow row)
+        private BusStationGridView GetBusStationDTOFromDataRow(DataRow row)
         {
-            BusStationDTO dto = new BusStationDTO();
+            BusStationGridView dto = new BusStationGridView();
             dto.ID = int.Parse(row["ID"].ToString());
             dto.BusID = row["BusID"].ToString();
             dto.MSNVDRIVER = row["MSNVDRIVER"].ToString();
@@ -200,7 +200,7 @@ namespace Bus.DAO
             dto.Status = row["Status"].ToString();
             return dto;
         }
-        public bool AddBusStation(BusStationDTO dto)
+        public bool AddBusStation(BusStationGridView dto)
         {
             string query = "Insert into BusStation values(@busId,@MSNVDRIVER,@DepartureTime,@TimeBack,@MSNVCAST,@Status)";
             SqlParameter[] sqlParameters = new SqlParameter[6];
@@ -237,7 +237,7 @@ namespace Bus.DAO
                 throw ex;
             }
         }
-        public bool UpdateBusStation(BusStationDTO dto)
+        public bool UpdateBusStation(BusStationGridView dto)
         {
             string query = "Update BusStation set BusId = @busId, MSNVDRIVER= @MSNVDRIVER, DepartureTime = @DepartureTime , TimeBack = @TimeBack , MSNVCAST = @MSNVCAST Where id = @id";
             SqlParameter[] sqlParameters = new SqlParameter[6];
