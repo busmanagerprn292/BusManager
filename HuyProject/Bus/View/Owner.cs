@@ -62,7 +62,7 @@ namespace Bus.View
             }
             return check;
         }
-   
+
         private void Owner_Load(object sender, EventArgs e)
         {
             LoadData();
@@ -210,13 +210,13 @@ namespace Bus.View
             txtAddress.Text = dgvOwner.Rows[index].Cells["Address"].Value.ToString();
             dtpDateOfBirth.Value = DateTime.Parse(dgvOwner.Rows[index].Cells["DateOfBirth"].Value.ToString());
             _listBus = bll.GetMyListBuses(txtId.Text);
-            main_owner_dto = new OwnerDTO() { Id = txtId.Text, Name = txtName.Text, Phone = txtPhone.Text, DateOfBirth = dtpDateOfBirth.Value , CMND = txtCMND.Text, Address = txtAddress.Text };
+            main_owner_dto = new OwnerDTO() { Id = txtId.Text, Name = txtName.Text, Phone = txtPhone.Text, DateOfBirth = dtpDateOfBirth.Value, CMND = txtCMND.Text, Address = txtAddress.Text };
             LoadListBus();
         }
 
         private void listBus_Click(object sender, EventArgs e)
         {
-            if(_listBus != null)
+            if (_listBus != null)
             {
                 if (listBus.SelectedItem != null)
                 {
@@ -234,10 +234,9 @@ namespace Bus.View
                 }
             }
         }
-
         private void btnAddBus_Click(object sender, EventArgs e)
         {
-            if(main_owner_dto != null)
+            if (main_owner_dto != null)
             {
                 BusViewToAddForOwner form = new BusViewToAddForOwner(main_owner_dto);
                 form.ShowDialog();
@@ -255,5 +254,6 @@ namespace Bus.View
         {
             this.Close();
         }
+
     }
 }
