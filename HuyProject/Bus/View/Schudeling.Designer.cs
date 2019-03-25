@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.cbDriver = new System.Windows.Forms.ComboBox();
             this.cbCasher = new System.Windows.Forms.ComboBox();
             this.tblViewBus = new System.Windows.Forms.DataGridView();
@@ -45,27 +46,30 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.InforBus = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtOwner = new System.Windows.Forms.TextBox();
             this.txtDateRegis = new System.Windows.Forms.TextBox();
+            this.txtOwner = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.txtPhone = new System.Windows.Forms.TextBox();
-            this.txtDateOfBirth = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
             this.txtRole = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtDateOfBirth = new System.Windows.Forms.TextBox();
+            this.txtPhone = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.busStationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.tblViewBus)).BeginInit();
             this.InforBus.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.busStationBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // cbDriver
             // 
+            this.cbDriver.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDriver.FormattingEnabled = true;
             this.cbDriver.Location = new System.Drawing.Point(128, 211);
             this.cbDriver.Name = "cbDriver";
@@ -75,6 +79,7 @@
             // 
             // cbCasher
             // 
+            this.cbCasher.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCasher.FormattingEnabled = true;
             this.cbCasher.Location = new System.Drawing.Point(128, 175);
             this.cbCasher.Name = "cbCasher";
@@ -174,6 +179,7 @@
             // 
             // CbBSX
             // 
+            this.CbBSX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbBSX.FormattingEnabled = true;
             this.CbBSX.Location = new System.Drawing.Point(128, 64);
             this.CbBSX.Name = "CbBSX";
@@ -199,6 +205,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(215, 20);
             this.dateTimePicker1.TabIndex = 59;
+            this.dateTimePicker1.Value = new System.DateTime(2019, 3, 24, 23, 28, 56, 0);
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // dateTimePicker2
@@ -209,6 +216,7 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(215, 20);
             this.dateTimePicker2.TabIndex = 60;
+            this.dateTimePicker2.Value = new System.DateTime(2019, 3, 24, 23, 29, 6, 0);
             this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // InforBus
@@ -222,14 +230,21 @@
             this.InforBus.Size = new System.Drawing.Size(435, 100);
             this.InforBus.TabIndex = 61;
             // 
-            // label2
+            // txtDateRegis
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 19);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Owner :";
+            this.txtDateRegis.Location = new System.Drawing.Point(171, 53);
+            this.txtDateRegis.Name = "txtDateRegis";
+            this.txtDateRegis.ReadOnly = true;
+            this.txtDateRegis.Size = new System.Drawing.Size(165, 20);
+            this.txtDateRegis.TabIndex = 3;
+            // 
+            // txtOwner
+            // 
+            this.txtOwner.Location = new System.Drawing.Point(171, 16);
+            this.txtOwner.Name = "txtOwner";
+            this.txtOwner.ReadOnly = true;
+            this.txtOwner.Size = new System.Drawing.Size(165, 20);
+            this.txtOwner.TabIndex = 2;
             // 
             // label3
             // 
@@ -240,21 +255,14 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Date Registration :";
             // 
-            // txtOwner
+            // label2
             // 
-            this.txtOwner.Location = new System.Drawing.Point(171, 16);
-            this.txtOwner.Name = "txtOwner";
-            this.txtOwner.ReadOnly = true;
-            this.txtOwner.Size = new System.Drawing.Size(165, 20);
-            this.txtOwner.TabIndex = 2;
-            // 
-            // txtDateRegis
-            // 
-            this.txtDateRegis.Location = new System.Drawing.Point(171, 53);
-            this.txtDateRegis.Name = "txtDateRegis";
-            this.txtDateRegis.ReadOnly = true;
-            this.txtDateRegis.Size = new System.Drawing.Size(165, 20);
-            this.txtDateRegis.TabIndex = 3;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(20, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Owner :";
             // 
             // panel1
             // 
@@ -271,65 +279,13 @@
             this.panel1.Size = new System.Drawing.Size(435, 135);
             this.panel1.TabIndex = 4;
             // 
-            // label4
+            // txtRole
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(71, 32);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Name :";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(71, 58);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Phone :";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(44, 91);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(68, 13);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Date Of Birth";
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(171, 30);
-            this.txtName.Name = "txtName";
-            this.txtName.ReadOnly = true;
-            this.txtName.Size = new System.Drawing.Size(165, 20);
-            this.txtName.TabIndex = 4;
-            // 
-            // txtPhone
-            // 
-            this.txtPhone.Location = new System.Drawing.Point(171, 58);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.ReadOnly = true;
-            this.txtPhone.Size = new System.Drawing.Size(165, 20);
-            this.txtPhone.TabIndex = 5;
-            // 
-            // txtDateOfBirth
-            // 
-            this.txtDateOfBirth.Location = new System.Drawing.Point(171, 88);
-            this.txtDateOfBirth.Name = "txtDateOfBirth";
-            this.txtDateOfBirth.ReadOnly = true;
-            this.txtDateOfBirth.Size = new System.Drawing.Size(165, 20);
-            this.txtDateOfBirth.TabIndex = 6;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(217, 258);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 62;
-            this.button2.Text = "Update Bus";
-            this.button2.UseVisualStyleBackColor = true;
+            this.txtRole.AutoSize = true;
+            this.txtRole.Location = new System.Drawing.Point(44, 11);
+            this.txtRole.Name = "txtRole";
+            this.txtRole.Size = new System.Drawing.Size(0, 13);
+            this.txtRole.TabIndex = 64;
             // 
             // label7
             // 
@@ -340,13 +296,70 @@
             this.label7.TabIndex = 63;
             this.label7.Text = "Role :";
             // 
-            // txtRole
+            // txtDateOfBirth
             // 
-            this.txtRole.AutoSize = true;
-            this.txtRole.Location = new System.Drawing.Point(44, 11);
-            this.txtRole.Name = "txtRole";
-            this.txtRole.Size = new System.Drawing.Size(0, 13);
-            this.txtRole.TabIndex = 64;
+            this.txtDateOfBirth.Location = new System.Drawing.Point(171, 88);
+            this.txtDateOfBirth.Name = "txtDateOfBirth";
+            this.txtDateOfBirth.ReadOnly = true;
+            this.txtDateOfBirth.Size = new System.Drawing.Size(165, 20);
+            this.txtDateOfBirth.TabIndex = 6;
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(171, 58);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.ReadOnly = true;
+            this.txtPhone.Size = new System.Drawing.Size(165, 20);
+            this.txtPhone.TabIndex = 5;
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(171, 30);
+            this.txtName.Name = "txtName";
+            this.txtName.ReadOnly = true;
+            this.txtName.Size = new System.Drawing.Size(165, 20);
+            this.txtName.TabIndex = 4;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(44, 91);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(68, 13);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Date Of Birth";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(71, 58);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(44, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Phone :";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(71, 32);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Name :";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(217, 258);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 62;
+            this.button2.Text = "Update Bus";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // busStationBindingSource
+            // 
+            this.busStationBindingSource.DataMember = "BusStation";
             // 
             // Schudeling
             // 
@@ -379,11 +392,13 @@
             this.Name = "Schudeling";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InforBus";
+            this.Load += new System.EventHandler(this.Schudeling_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tblViewBus)).EndInit();
             this.InforBus.ResumeLayout(false);
             this.InforBus.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.busStationBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -422,5 +437,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label txtRole;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.BindingSource busStationBindingSource;
     }
 }

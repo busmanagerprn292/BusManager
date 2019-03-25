@@ -16,4 +16,7 @@ namespace Bus.DTO
         public string TimeBack { get; set; }
         public int Status { get; set; }
     }
+
+
+
 }

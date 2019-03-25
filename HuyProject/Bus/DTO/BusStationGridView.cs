@@ -8,10 +8,19 @@ namespace Bus.DTO
 {
     class BusStationGridView
     {
+        public int ID { get; set; }
         public string BusID { get; set; }
-        public string BSX { get; set; }
-        public string TimeGo { get; set; }
+        public string MSNVDRIVER { get; set; }
+        public string MSNVCAST { get; set; }
+        public string DepartureTime { get; set; }
         public string TimeBack { get; set; }
-        public string MyProperty { get; set; }
+        public string Status { get; set; }
+    }
+
+    public enum Change
+    {
+        ready = 1,
+        late = 2,
+        finished = 3
     }
 }

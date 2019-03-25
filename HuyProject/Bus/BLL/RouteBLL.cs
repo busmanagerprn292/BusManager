@@ -10,7 +10,7 @@ namespace Bus.BLL
 {
     class RouteBLL
     {
-        private RouteDAO dao;
+        private readonly RouteDAO dao;
         public RouteBLL()
         {
             dao = new RouteDAO();

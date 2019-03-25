@@ -33,5 +33,15 @@ namespace Bus.Properties {
                 return ((string)(this["BusManagerConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=Binhtvse63547;Initial Catalog=BusManager;User ID=sa;Password=1")]
+        public string BusManagerConnectionString1 {
+            get {
+                return ((string)(this["BusManagerConnectionString1"]));
+            }
+        }
     }
 }

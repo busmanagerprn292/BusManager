@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Bus.DAO
 {
-    public class BusStationDAO : IDAO<BusStationDAO>
+    public class BusStationDAO : IDAO<BusStationDTO>
     {
         private readonly DBConnection conn;
 
@@ -30,9 +30,26 @@ namespace Bus.DAO
             dto.Status = int.Parse(row["Status"].ToString());
             return dto;
         }
-        public bool Add(BusStationDAO dto)
+        public bool Add(BusStationDTO dto)
         {
-            throw new NotImplementedException();
+            string query = "Insert into BusStation values(@BusID,@MSNVDRIVER,@DepartureTime,@TimeBack,@MSNVCAST,@Status)";
+            SqlParameter[] sqlParameters = new SqlParameter[6];
+            sqlParameters[0] = new SqlParameter("@BusID", SqlDbType.NVarChar) { Value = dto.BusID };
+            sqlParameters[1] = new SqlParameter("@MSNVDRIVER", SqlDbType.NVarChar) { Value = dto.MSNVDRIVER };
+            sqlParameters[2] = new SqlParameter("@TimeBack", SqlDbType.DateTime) { Value = dto.TimeBack };
+            sqlParameters[3] = new SqlParameter("@MSNVCAST", SqlDbType.NVarChar) { Value = dto.MSNVCAST };
+            sqlParameters[4] = new SqlParameter("@Status", SqlDbType.Int) { Value = dto.Status };
+            sqlParameters[5] = new SqlParameter("@DepartureTime", SqlDbType.DateTime) { Value = dto.DepartureTime };
+            try
+            {
+                conn.ExecuteInsertQuery(query, sqlParameters);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw ex;
+            }
         }
 
         //public List<>
@@ -42,10 +59,28 @@ namespace Bus.DAO
             throw new NotImplementedException();
         }
 
-        public List<BusStationDAO> GetAll()
+        public List<BusStationDTO> GetAllBus()
         {
-            throw new NotImplementedException();
+            string query = "Select * from BusStation";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+
+            try
+            {
+                DataTable dt = conn.ExecuteSelectQuery(query, sqlParameters);
+                List<BusStationDTO> list = new List<BusStationDTO>();
+                foreach (DataRow r in dt.Rows)
+                {
+                    BusStationDTO dto = GetBusStationDTOFromDataRow(r);
+                    list.Add(dto);
+                }
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
+
 
         public List<BusStationDTO> SearchScheduleOfBusByBusId(string busId)
         {
@@ -70,7 +105,7 @@ namespace Bus.DAO
             }
         }
 
-        public bool Update(BusStationDAO dto)
+        public bool Update(BusStationDTO dto)
         {
             throw new NotImplementedException();
         }
@@ -79,5 +114,16 @@ namespace Bus.DAO
         {
             throw new NotImplementedException();
         }
+
+        List<BusStationDTO> IDAO<BusStationDTO>.GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        BusStationDTO IDAO<BusStationDTO>.SearchById(object id)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

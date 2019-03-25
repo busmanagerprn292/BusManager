@@ -213,20 +213,25 @@ namespace Bus.View
 
         private void listBus_Click(object sender, EventArgs e)
         {
-            var index = listBus.SelectedValue;
-            //MessageBox.Show(index.ToString());
-            BusDTO dto = null;
-            foreach (var bus in _listBus)
+            if (_listBus!=null)
             {
-                if (bus.Id.Equals(index))
+                var index = listBus.SelectedValue;
+                //MessageBox.Show(index.ToString());
+                BusDTO dto = null;
+                foreach (var bus in _listBus)
                 {
-                    dto = bus;
+                    if (bus.Id.Equals(index))
+                    {
+                        dto = bus;
+                    }
                 }
+                BusDetailOfOwner _detailBusForm = new BusDetailOfOwner(dto, _listBus, txtName.Text);
+                _detailBusForm.ShowDialog();
+                _listBus = _detailBusForm._listBus;
+                LoadListBus();
             }
-            BusDetailOfOwner _detailBusForm = new BusDetailOfOwner(dto , _listBus , txtName.Text);
-            _detailBusForm.ShowDialog();
-            _listBus = _detailBusForm._listBus;
-            LoadListBus();
+       
+          
         }
     }
 }
