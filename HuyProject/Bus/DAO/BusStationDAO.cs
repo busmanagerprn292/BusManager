@@ -27,7 +27,7 @@ namespace Bus.DAO
             dto.MSNVCAST = row["MSNVCAST"].ToString();
             dto.DepartureTime = row["DepartureTime"].ToString();
             dto.TimeBack = row["TimeBack"].ToString();
-            dto.Status = row["Status"].ToString();
+            dto.Status = int.Parse(row["Status"].ToString());
             return dto;
         }
         public bool Add(BusStationDTO dto)
@@ -56,7 +56,20 @@ namespace Bus.DAO
 
         public bool DeleteById(object id)
         {
-            throw new NotImplementedException();
+            string query = "delete from BusStation  where id = @id ";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+
+            sqlParameters[0] = new SqlParameter("@id", SqlDbType.Int) { Value = id };
+            try
+            {
+                conn.ExecuteUpdateQuery(query, sqlParameters);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
         }
 
         public List<BusStationDTO> GetAllBus()
@@ -81,7 +94,24 @@ namespace Bus.DAO
             }
         }
 
+        public bool UpdateStatus(int busid,int status )
+        {
+            string query = "update BusStation set status = @status where id = @id ";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
 
+            sqlParameters[0] = new SqlParameter("@status", SqlDbType.Int) { Value = status };
+            sqlParameters[1] = new SqlParameter("@id", SqlDbType.Int) { Value = busid };
+            try
+            {
+                conn.ExecuteUpdateQuery(query, sqlParameters);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
+        }
         public List<BusStationDTO> SearchScheduleOfBusByBusId(string busId)
         {
             string query = "Select * from BusStation Where BusId = @id";
@@ -115,10 +145,6 @@ namespace Bus.DAO
             throw new NotImplementedException();
         }
 
-        BusStationDAO IDAO<BusStationDAO>.SearchById(object id)
-        {
-            throw new NotImplementedException();
-        }
 
         List<BusStationDTO> IDAO<BusStationDTO>.GetAll()
         {

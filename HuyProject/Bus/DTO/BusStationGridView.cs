@@ -21,6 +21,7 @@ namespace Bus.DTO
     {
         ready = 1,
         late = 2,
-        finished = 3
+        finished = 3,
+        doing =4
     }
 }

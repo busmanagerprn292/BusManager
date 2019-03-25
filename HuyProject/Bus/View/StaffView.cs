@@ -40,7 +40,7 @@ namespace Bus.View
         }
         public void CreateID(string id)
         {
-            Number = int.Parse(id.Substring(id.Length - 1));
+            Number = int.Parse(id.Substring(id.Length - 2));
         }
         public void LoadComboBox()
         {
@@ -57,7 +57,6 @@ namespace Bus.View
             //string value = ((KeyValuePair<string, string>)comboBox1.SelectedItem).Value;
         }
 
-
         private void txtStaffPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
@@ -65,8 +64,6 @@ namespace Bus.View
                 e.Handled = true;
             }
         }
-
-
 
         private string CheckValidate()
         {
@@ -119,30 +116,41 @@ namespace Bus.View
         private void btnStaffAdd_Click(object sender, EventArgs e)
         {
             string check = CheckValidate();
-
-
             if (check.Equals(""))
             {
-                if (bll.InsertStaff(new StaffDTO()
+                if (Number < 10)
                 {
-                    RoleID = ((KeyValuePair<string, string>)cbStaffRole.SelectedItem).Key,
-                    CMND = txtStaffCMND.Text,
-                    Date = dtpStaffDateOfBirth.Text,
-                    MSNV = "ST000" + ++Number,
-                    Name = txtStaffName.Text,
-                    Phone = txtStaffPhone.Text
-                }))
-                {
-                    MessageBox.Show("Success");
-                    LoadView();
+                    if (bll.InsertStaff(new StaffDTO()
+                    {
+                        RoleID = ((KeyValuePair<string, string>)cbStaffRole.SelectedItem).Key,
+                        CMND = txtStaffCMND.Text,
+                        Date = dtpStaffDateOfBirth.Text,
+                        MSNV = "ST000" + ++Number,
+                        Name = txtStaffName.Text,
+                        Phone = txtStaffPhone.Text
+                    }))
+                    {
+                        MessageBox.Show("Success");
+                        LoadView();
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Files");
-
+                    if (bll.InsertStaff(new StaffDTO()
+                    {
+                        RoleID = ((KeyValuePair<string, string>)cbStaffRole.SelectedItem).Key,
+                        CMND = txtStaffCMND.Text,
+                        Date = dtpStaffDateOfBirth.Text,
+                        MSNV = "ST00" + ++Number,
+                        Name = txtStaffName.Text,
+                        Phone = txtStaffPhone.Text
+                    }))
+                    {
+                        MessageBox.Show("Success");
+                        LoadView();
+                    }
                 }
             }
-
         }
 
 
@@ -174,8 +182,7 @@ namespace Bus.View
                 }
                 else
                 {
-                    MessageBox.Show("Files");
-
+                    MessageBox.Show("ERROR");
                 }
             }
         }

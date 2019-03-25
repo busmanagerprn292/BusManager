@@ -131,7 +131,7 @@ namespace Bus.DAO
                 dto.MSNVCAST = dt.Rows[0]["MSNVCAST"].ToString();
                 dto.DepartureTime =  dt.Rows[0]["DepartureTime"].ToString();
                 dto.TimeBack = dt.Rows[0]["TimeBack"].ToString();
-                dto.Status = dt.Rows[0]["Status"].ToString();
+                dto.Status =int.Parse( dt.Rows[0]["Status"].ToString());
                 return dto;
             }
             return null;

@@ -54,13 +54,13 @@ namespace Bus.View
                     TimeBack = dateTimePicker2.Text
                 };
 
-                MessageBox.Show(dateTimePicker2.Text);
                 if (dao.Add(busdt))
                 {
                     MessageBox.Show("success");
+                    LoadDataGridView();
                 }
             }
-                else
+            else
             {
                 MessageBox.Show("Your Bus has Schudeling");
 
@@ -78,7 +78,6 @@ namespace Bus.View
             CbBSX.DisplayMember = "Value";
             CbBSX.ValueMember = "Key";
         }
-
         public void LoadAllStaff()
         {
             var list = Staff.getAll();
@@ -103,7 +102,6 @@ namespace Bus.View
             cbDriver.ValueMember = "Key";
 
         }
-
         private void CbBSX_SelectedIndexChanged(object sender, EventArgs e)
         {
             string key = ((KeyValuePair<string, string>)CbBSX.SelectedItem).Key;
@@ -111,7 +109,6 @@ namespace Bus.View
             txtOwner.Text = index[0];
             txtDateRegis.Text = index[1];
         }
-
         private void cbCasher_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtRole.Text = "Casher";
@@ -182,23 +179,16 @@ namespace Bus.View
             {
                 DateTime DateGoPick = Convert.ToDateTime(dateTimePicker1.Text);
                 DateTime DateReturnPick = Convert.ToDateTime(dateTimePicker2.Text);
-
+                bool check = false;
                 foreach (var item in list)
                 {
                     DateTime TimeGo = Convert.ToDateTime(item.DepartureTime);
                     DateTime TimeBack = Convert.ToDateTime(item.TimeBack);
 
-                    if ((TimeGo - DateGoPick).TotalDays==0 &&( (DateGoPick - TimeBack).TotalHours< 0 ) && (DateReturnPick - TimeGo).TotalHours < 0)
+                    if ((DateGoPick - TimeBack).TotalMinutes > 0 || (TimeGo - DateReturnPick).TotalMinutes > 0)
                     {
-                        return false;
-                    }else if ((TimeGo - DateGoPick).TotalDays==0 &&((DateReturnPick - TimeGo).TotalHours > 0) && (TimeBack - TimeGo).TotalHours > 0)
-                    {
-                        return false;
-                    }else if ((DateGoPick-TimeGo).TotalHours >= 0 && (TimeBack - DateGoPick).TotalHours>=0)
-                    {
-                        return false;
-                    }else if ((DateReturnPick - TimeGo).TotalHours >= 0 && (TimeBack - DateReturnPick).TotalHours >= 0) { return false; }
-                    else if ((DateGoPick - DateReturnPick).TotalHours ==0)
+                    }
+                    else
                     {
                         return false;
                     }
@@ -207,21 +197,17 @@ namespace Bus.View
             return true;
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            
-        }
-
+        List<BusStationDTO> list = new List<BusStationDTO>();
         public void LoadDataGridView()
         {
             tblViewBus.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             tblViewBus.SelectionMode =
             DataGridViewSelectionMode.FullRowSelect;
-            
 
-            var list = dao.GetAllBus();
+
+            list = dao.GetAllBus();
             List<BusStationGridView> listView = new List<BusStationGridView>();
-            
+
             if (list != null)
             {
                 foreach (var i in list)
@@ -234,25 +220,83 @@ namespace Bus.View
                         MSNVCAST = i.MSNVCAST,
                         MSNVDRIVER = i.MSNVDRIVER,
                         Status = i.Status.ToString(),
-                        TimeBack = i.TimeBack
+                        TimeBack = i.TimeBack,
                     });
                 }
                 tblViewBus.DataSource = listView;
                 tblViewBus.Columns["ID"].Visible = false;
-              
+
                 for (int i = 0; i < tblViewBus.Rows.Count; i++)
                 {
                     tblViewBus[6, i].Value = Enum.GetName(typeof(Change), list[i].Status).ToString();
                 }
-                
             }
         }
 
-        private void Schudeling_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'busManagerDataSet.BusStation' table. You can move, or remove it, as needed.
-            
 
+        int count = 0;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            for (int i = 0; i < tblViewBus.Rows.Count; i++)
+            {
+                DateTime Now = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                DateTime Back = Convert.ToDateTime(list[i].TimeBack);
+                DateTime Go = Convert.ToDateTime(list[i].DepartureTime);
+
+                if ((Now - Back).TotalMinutes >0)
+                {
+                    tblViewBus[6, i].Value = Enum.GetName(typeof(Change), 3).ToString();// ready
+                   
+
+                    string a = Convert.ToString(tblViewBus.Rows[i].Cells["status"].Value);
+                    if (a.Equals("finished")==false)
+                    {
+                        dao.UpdateStatus(list[i].ID, 3);
+                        LoadDataGridView();
+                    }
+                }
+                else if ((Go - Now).TotalMinutes > 10)
+                {
+                    tblViewBus[6, i].Value = Enum.GetName(typeof(Change), 1).ToString(); // 
+
+                    string a = Convert.ToString(tblViewBus.Rows[i].Cells["status"].Value);
+                    if (a.Equals("ready") == false)
+                    {
+                        LoadDataGridView();
+                        dao.UpdateStatus(list[i].ID, 1);
+                    }
+                }
+                else
+                {
+                    tblViewBus[6, i].Value = Enum.GetName(typeof(Change), 4).ToString();
+                    if (count%10==0)
+                    {
+                        dao.UpdateStatus(list[i].ID, 4);
+                        LoadDataGridView();
+                        count++;
+                    }
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (tblViewBus.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = tblViewBus.SelectedCells[0].RowIndex;
+                int id = list[selectedrowindex].ID;
+                if (dao.DeleteById(id))
+                {
+                    MessageBox.Show("success");
+                    LoadDataGridView();
+                }
+            }
         }
     }
 }
