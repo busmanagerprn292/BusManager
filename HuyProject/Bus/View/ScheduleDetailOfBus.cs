@@ -15,7 +15,7 @@ namespace Bus.View
     public partial class ScheduleDetailOfBus : Form
     {
         BusDTO main_bus_dto;
-        BusStationDTO main_schedule_dto;
+        BusStationGridView main_schedule_dto;
         StaffBLL main_staff_bll;
         RouteDTO main_route_dto;
         StaffDTO main_driver_dto;
@@ -31,7 +31,7 @@ namespace Bus.View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public ScheduleDetailOfBus(BusDTO dto, RouteDTO rDto, BusStationDTO bDto, StaffDTO casher, StaffDTO driver)
+        public ScheduleDetailOfBus(BusDTO dto, RouteDTO rDto, BusStationGridView bDto, StaffDTO casher, StaffDTO driver)
         {
             InitializeComponent();
             main_bus_dto = dto;
@@ -139,7 +139,7 @@ namespace Bus.View
                 string status = "wait";
                 try
                 {
-                    main_schedule_dto = new BusStationDTO() { BusID = busId, DepartureTime = departure_time, TimeBack = back_time, MSNVCAST = casher, MSNVDRIVER = driver, Status = status };
+                    main_schedule_dto = new BusStationGridView() { BusID = busId, DepartureTime = departure_time, TimeBack = back_time, MSNVCAST = casher, MSNVDRIVER = driver, Status = status };
                     bus_bll.AddBusStation(main_schedule_dto);
                     LoadData();
                 }
@@ -166,7 +166,7 @@ namespace Bus.View
                     string back_time = dtpTimeBack.Value.ToString();
                     try
                     {
-                        main_schedule_dto = new BusStationDTO() { ID = id, BusID = busId, DepartureTime = departure_time, TimeBack = back_time, MSNVCAST = casher, MSNVDRIVER = driver };
+                        main_schedule_dto = new BusStationGridView() { ID = id, BusID = busId, DepartureTime = departure_time, TimeBack = back_time, MSNVCAST = casher, MSNVDRIVER = driver };
                         bus_bll.UpdateBusStation(main_schedule_dto);
                         LoadData();
                     }

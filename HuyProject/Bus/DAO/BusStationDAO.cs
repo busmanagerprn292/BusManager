@@ -52,8 +52,6 @@ namespace Bus.DAO
             }
         }
 
-        //public List<>
-
         public bool DeleteById(object id)
         {
             string query = "delete from BusStation  where id = @id ";
@@ -93,10 +91,6 @@ namespace Bus.DAO
                 throw ex;
             }
         }
-
-<<<<<<< HEAD
-        
-=======
         public bool UpdateStatus(int busid,int status )
         {
             string query = "update BusStation set status = @status where id = @id ";
@@ -137,8 +131,6 @@ namespace Bus.DAO
                 throw ex;
             }
         }
->>>>>>> 95d01482e1d81adbfd817bb88cb848f0fa4a1d00
-
         public bool Update(BusStationDTO dto)
         {
             throw new NotImplementedException();
