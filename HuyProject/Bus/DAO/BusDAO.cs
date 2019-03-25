@@ -42,6 +42,7 @@ namespace Bus.DAO
 
             return list;
         }
+
         public bool Add(BusDTO dto)
         {
             string query = "Insert into Bus values(@id,@bsx,@brand,@DateRegistration,@ownerId,@idTuyenDuong)";

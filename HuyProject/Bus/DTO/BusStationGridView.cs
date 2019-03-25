@@ -9,6 +9,7 @@ namespace Bus.DTO
     class BusStationGridView
     {
         public int ID { get; set; }
+        public string BXS { get; set; }
         public string BusID { get; set; }
         public string MSNVDRIVER { get; set; }
         public string MSNVCAST { get; set; }
