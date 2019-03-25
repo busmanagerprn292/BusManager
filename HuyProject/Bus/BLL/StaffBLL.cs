@@ -40,5 +40,9 @@ namespace Bus.BLL
         {
             return Sdao.DeleteById(id);
         }
+        public StaffDTO SearchStaffById(string mssv)
+        {
+            return Sdao.SearchById(mssv);
+        }
     }
 }

@@ -69,5 +69,13 @@ namespace Bus.BLL
             OwnerDAO oDao = new OwnerDAO();
             return oDao.GetAll();
         }
+        public BusStationDTO GetDetailOfScheduleById(int id)
+        {
+            return dao.GetDetailOfScheduleById(id);
+        }
+        public string GetRoleNameById(string RoleId)
+        {
+            return dao.GetRoleNameById(RoleId);
+        }
     }
 }

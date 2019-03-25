@@ -49,6 +49,21 @@ namespace Bus.View
             dgvBus.DataSource = bll.GetBusList();
         }
         /// <summary>
+        /// Update main_busDto form textfield
+        /// </summary>
+        private void UpdateMainBusDto()
+        {
+            main_busDto = new BusDTO()
+            {
+                Id = txtId.Text,
+                BSX = txtBSX.Text,
+                Brand = txtBrand.Text,
+                DateRegistration = dtpDateRegistration.Value,
+                OwnerID = cbbOwner.SelectedValue.ToString(),
+                RouteID = cbbRouteID.Text
+            };
+        }
+        /// <summary>
         /// Load DataSource form database
         /// </summary>
         private void LoadDataOwner()
@@ -65,8 +80,8 @@ namespace Bus.View
         /// </summary>
         private void LoadListSchedule()
         {
+            dgvSchedule.DataSource = null;
             dgvSchedule.DataSource = main_scheduleDto;
-            dgvSchedule.Columns.Remove("ID");
             dgvSchedule.Columns.Remove("MSNVDRIVER");
             dgvSchedule.Columns.Remove("MSNVCAST");
         }
@@ -90,6 +105,7 @@ namespace Bus.View
                 {
                     item.DepartureTime = item.DepartureTime.Split(' ')[1] + " " + item.DepartureTime.Split(' ')[2];
                     item.TimeBack = item.TimeBack.Split(' ')[1] + " " + item.TimeBack.Split(' ')[2];
+                    UpdateMainBusDto();
                 }
                 LoadListSchedule();
             }
@@ -185,6 +201,7 @@ namespace Bus.View
                         OwnerDTO od = (OwnerDTO)cbbOwner.SelectedItem;
                         bll.InsertBus(txtId.Text, txtBSX.Text, txtBrand.Text, dtpDateRegistration.Value, od.Id, cbbRouteID.Text);
                         LoadData();
+                        UpdateMainBusDto();
                         txtId.ReadOnly = true;
                         cbbOwner.Enabled = false;
                     }
@@ -217,6 +234,7 @@ namespace Bus.View
                         OwnerDTO od = (OwnerDTO)cbbOwner.SelectedItem;
                         bll.UpdateBus(txtId.Text, txtBSX.Text, txtBrand.Text, dtpDateRegistration.Value, od.Id, cbbRouteID.Text);
                         LoadData();
+                        UpdateMainBusDto();
                     }
                     catch (Exception ex)
                     {
@@ -237,6 +255,7 @@ namespace Bus.View
                 try
                 {
                     bll.DeleteBus(txtId.Text);
+                    main_busDto = null;
                 }
                 catch (Exception ex)
                 {
@@ -267,6 +286,39 @@ namespace Bus.View
             //flag_owner_dto = form.dto;
             //main_listOwner.Add(flag_owner_dto);
             //LoadDataOwner();
+        }
+
+        private void btnAddSchedule_Click(object sender, EventArgs e)
+        {
+            if(main_busDto == null)
+            {
+                MessageBox.Show("Please choose bus before create Schedule");
+            }
+            else
+            {
+                ScheduleDetailOfBus form = new ScheduleDetailOfBus(main_busDto,(RouteDTO)cbbRouteID.SelectedItem);
+                form.ShowDialog();
+            }
+        }
+
+        private void dgvSchedule_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (main_busDto == null)
+            {
+                MessageBox.Show("Please choose bus before create Schedule");
+            }
+            else
+            {
+                StaffBLL sBll = new StaffBLL();
+                int index = dgvSchedule.CurrentRow.Index;
+                BusStationDTO schedule_dto = bll.GetDetailOfScheduleById(int.Parse(dgvSchedule.Rows[index].Cells["Id"].Value.ToString()));
+                StaffDTO driver = sBll.SearchStaffById(schedule_dto.MSNVDRIVER);
+                StaffDTO casher = sBll.SearchStaffById(schedule_dto.MSNVCAST);
+                ScheduleDetailOfBus form = new ScheduleDetailOfBus(main_busDto, (RouteDTO)cbbRouteID.SelectedItem , schedule_dto , driver, casher);
+                form.ShowDialog();
+                main_scheduleDto = bll.SearchScheduleOfBusByBusId(txtId.Text);
+                LoadListSchedule();
+            }
         }
     }
 }

@@ -239,6 +239,7 @@
             this.btnAddSchedule.TabIndex = 29;
             this.btnAddSchedule.Text = "Create Schedule";
             this.btnAddSchedule.UseVisualStyleBackColor = true;
+            this.btnAddSchedule.Click += new System.EventHandler(this.btnAddSchedule_Click);
             // 
             // groupBox2
             // 
@@ -410,6 +411,7 @@
             this.dgvSchedule.Name = "dgvSchedule";
             this.dgvSchedule.Size = new System.Drawing.Size(427, 227);
             this.dgvSchedule.TabIndex = 10;
+            this.dgvSchedule.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSchedule_CellContentClick);
             // 
             // label1
             // 

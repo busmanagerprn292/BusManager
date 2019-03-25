@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bus.DTO
 {
-    class RouteDTO
+    public class RouteDTO
     {
         public int Id { get; set; }
         public string TuyenDuong { get; set; }
