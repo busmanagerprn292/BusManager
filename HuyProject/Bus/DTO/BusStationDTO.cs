@@ -14,7 +14,7 @@ namespace Bus.DTO
         public string MSNVCAST { get; set; }
         public string DepartureTime { get; set; }
         public string TimeBack { get; set; }
-        public int Status { get; set; }
+        public string Status { get; set; }
     }
 
 

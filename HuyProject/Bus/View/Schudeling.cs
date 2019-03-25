@@ -50,7 +50,7 @@ namespace Bus.View
                     DepartureTime = dateTimePicker1.Text,
                     MSNVCAST = ((KeyValuePair<string, string>)cbCasher.SelectedItem).Value,
                     MSNVDRIVER = ((KeyValuePair<string, string>)cbDriver.SelectedItem).Value,
-                    Status = 1,
+                    Status = "1",
                     TimeBack = dateTimePicker2.Text
                 };
 
@@ -228,7 +228,7 @@ namespace Bus.View
 
                 for (int i = 0; i < tblViewBus.Rows.Count; i++)
                 {
-                    tblViewBus[6, i].Value = Enum.GetName(typeof(Change), list[i].Status).ToString();
+                    tblViewBus[6, i].Value = Enum.GetName(typeof(Change),int.Parse( list[i].Status)).ToString();
                 }
             }
         }

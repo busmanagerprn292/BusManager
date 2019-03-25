@@ -27,7 +27,7 @@ namespace Bus.DAO
             dto.MSNVCAST = row["MSNVCAST"].ToString();
             dto.DepartureTime = row["DepartureTime"].ToString();
             dto.TimeBack = row["TimeBack"].ToString();
-            dto.Status = int.Parse(row["Status"].ToString());
+            dto.Status = row["Status"].ToString();
             return dto;
         }
         public bool Add(BusStationDTO dto)
