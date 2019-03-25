@@ -47,6 +47,7 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnExit = new System.Windows.Forms.Button();
             this.btnAddBus = new System.Windows.Forms.Button();
             this.txtId = new System.Windows.Forms.MaskedTextBox();
             this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
@@ -60,7 +61,6 @@
             this.errorProvider4 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider5 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider6 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnExit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOwner)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -270,6 +270,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "OwnerDetail";
             // 
+            // btnExit
+            // 
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(257, 470);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(97, 31);
+            this.btnExit.TabIndex = 44;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // btnAddBus
             // 
             this.btnAddBus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -366,22 +377,12 @@
             // 
             this.errorProvider6.ContainerControl = this;
             // 
-            // btnExit
-            // 
-            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(257, 470);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(97, 31);
-            this.btnExit.TabIndex = 44;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
             // Owner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1170, 578);
+            this.ControlBox = false;
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label8);

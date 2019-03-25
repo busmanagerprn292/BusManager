@@ -85,7 +85,7 @@ namespace Bus.View
             for (int i = 0; i < dgvSchedule.Rows.Count; i++)
             {
                 dgvSchedule[7, i].Value = Enum.GetName(typeof(Change), int.Parse(main_scheduleDto[i].Status)).ToString();
-
+                //dgvSchedule[7, i].Value = ((Change)int.Parse(main_scheduleDto[i].Status)).ToString();
             }
             dgvSchedule.Columns.Remove("MSNVDRIVER");
             dgvSchedule.Columns.Remove("MSNVCAST");
