@@ -69,6 +69,10 @@ namespace Bus.View
             listBus.DataSource = _listBus;
             listBus.DisplayMember = "BSX";
             listBus.ValueMember = "Id";
+            if(dto != null)
+            {
+                listBus.SelectedValue = dto.Id;
+            }
         }
         private void BusDetailOfOwner_Load(object sender, EventArgs e)
         {
