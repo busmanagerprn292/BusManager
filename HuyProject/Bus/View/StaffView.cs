@@ -194,7 +194,7 @@ namespace Bus.View
                 MessageBox.Show("Successs");
                 LoadView();
             }
-            else { MessageBox.Show("Error"); }
+            else { MessageBox.Show("This Staff is doing"); }
         }
 
         private void txtStaffCMND_KeyPress_1(object sender, KeyPressEventArgs e)

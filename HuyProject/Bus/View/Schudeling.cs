@@ -231,7 +231,7 @@ namespace Bus.View
 
                 for (int i = 0; i < tblViewBus.Rows.Count; i++)
                 {
-                    tblViewBus[6, i].Value = Enum.GetName(typeof(Change),int.Parse( list[i].Status)).ToString();
+                    tblViewBus[7, i].Value = Enum.GetName(typeof(Change),int.Parse( list[i].Status)).ToString();
                 }
             }
         }
@@ -248,7 +248,7 @@ namespace Bus.View
 
                 if ((Now - Back).TotalMinutes >0)
                 {
-                    tblViewBus[6, i].Value = Enum.GetName(typeof(Change), 3).ToString();// ready
+                    tblViewBus[7, i].Value = Enum.GetName(typeof(Change), 3).ToString();// ready
                    
 
                     string a = Convert.ToString(tblViewBus.Rows[i].Cells["status"].Value);
@@ -260,7 +260,7 @@ namespace Bus.View
                 }
                 else if ((Go - Now).TotalMinutes > 10)
                 {
-                    tblViewBus[6, i].Value = Enum.GetName(typeof(Change), 1).ToString(); // 
+                    tblViewBus[7, i].Value = Enum.GetName(typeof(Change), 1).ToString(); // 
 
                     string a = Convert.ToString(tblViewBus.Rows[i].Cells["status"].Value);
                     if (a.Equals("ready") == false)
@@ -271,7 +271,7 @@ namespace Bus.View
                 }
                 else
                 {
-                    tblViewBus[6, i].Value = Enum.GetName(typeof(Change), 4).ToString();
+                    tblViewBus[7, i].Value = Enum.GetName(typeof(Change), 4).ToString();
                     if (count%10==0)
                     {
                         dao.UpdateStatus(list[i].ID, "4");
