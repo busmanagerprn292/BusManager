@@ -85,7 +85,7 @@ namespace Bus.View
             for (int i = 0; i < dgvSchedule.Rows.Count; i++)
             {
                 dgvSchedule[7, i].Value = Enum.GetName(typeof(Change), int.Parse(main_scheduleDto[i].Status)).ToString();
-
+                //dgvSchedule[7, i].Value = ((Change)int.Parse(main_scheduleDto[i].Status)).ToString();
             }
             dgvSchedule.Columns.Remove("MSNVDRIVER");
             dgvSchedule.Columns.Remove("MSNVCAST");
@@ -309,6 +309,13 @@ namespace Bus.View
             {
                 ScheduleDetailOfBus form = new ScheduleDetailOfBus(main_busDto,(RouteDTO)cbbRouteID.SelectedItem);
                 form.ShowDialog();
+                main_scheduleDto = bll.SearchScheduleOfBusByBusId(txtId.Text);
+                foreach (var item in main_scheduleDto)
+                {
+                    item.DepartureTime = item.DepartureTime.Split(' ')[1] + " " + item.DepartureTime.Split(' ')[2];
+                    item.TimeBack = item.TimeBack.Split(' ')[1] + " " + item.TimeBack.Split(' ')[2];
+                }
+                LoadListSchedule();
             }
         }
 

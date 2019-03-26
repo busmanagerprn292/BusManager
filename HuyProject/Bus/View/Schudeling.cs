@@ -112,11 +112,11 @@ namespace Bus.View
         private void cbCasher_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtRole.Text = "Casher";
-            string key = ((KeyValuePair<string, string>)cbCasher.SelectedItem).Key;
-            string[] index = key.Split('.');
-            txtName.Text = index[0];
-            txtPhone.Text = index[1];
-            txtDateOfBirth.Text = index[2];
+            //string key = ((KeyValuePair<string, string>)cbCasher.SelectedItem).Key;
+            //string[] index = key.Split('.');
+            //txtName.Text = index[0];
+            //txtPhone.Text = index[1];
+            //txtDateOfBirth.Text = index[2];
         }
 
         private void cbDriver_SelectedIndexChanged(object sender, EventArgs e)

@@ -57,7 +57,7 @@ namespace Bus.View
                 {
                     try
                     {
-                        bll.InsertRoute(int.Parse(txtID.Text), txtTuyenDuong.Text);
+                        bll.InsertRoute(0, txtTuyenDuong.Text);
                         LoadData();
                     }
                     catch (Exception ex)
