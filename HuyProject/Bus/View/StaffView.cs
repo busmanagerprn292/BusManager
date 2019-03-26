@@ -37,6 +37,7 @@ namespace Bus.View
             var a = bll.getAll();
             string ID = a.ElementAt(a.Count - 1).MSNV;
             CreateID(ID);
+            gvStaff.Columns.Remove("password");
         }
         public void CreateID(string id)
         {
@@ -127,7 +128,8 @@ namespace Bus.View
                         Date = dtpStaffDateOfBirth.Text,
                         MSNV = "ST000" + ++Number,
                         Name = txtStaffName.Text,
-                        Phone = txtStaffPhone.Text
+                        Phone = txtStaffPhone.Text,
+                        Password = Password.Text
                     }))
                     {
                         MessageBox.Show("Success");
@@ -221,6 +223,41 @@ namespace Bus.View
                     cbStaffRole.SelectedValue = St.RoleID.ToString();
                     dtpStaffDateOfBirth.Text = St.Date.ToString();
                 }
+            }
+        }
+
+        private void cbStaffRole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string value = ((KeyValuePair<string, string>)cbStaffRole.SelectedItem).Value;
+            if (value.Equals("Administrator"))
+            {
+                Panel.Visible = true;
+                timer1.Start();
+            }
+            else
+            {
+                timer1.Stop();
+                Panel.Visible = false;
+                Password.Text = "";
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (Password.Text.Equals(Comfrimpassword.Text)&&Password.Text.Length>8)
+            {
+                btnStaffAdd.Enabled = true;
+                txtError.Text = "";
+            }
+            else if (Password.Text.Length< 8||Comfrimpassword.Text.Length<8)
+            {
+                btnStaffAdd.Enabled = false;
+                txtError.Text = " Password has more 8 charater";
+            }
+            else
+            {
+                btnStaffAdd.Enabled = false;
+                txtError.Text= "Please check your password";
             }
         }
     }

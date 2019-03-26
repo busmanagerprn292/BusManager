@@ -20,16 +20,17 @@ namespace Bus.DAO
         public bool Add(StaffDTO dto)
         {
             bool check = true;
-            string sql = "insert into Staff values (@MSNV,@CMND,@Name,@DateOfBirth,@Phone,@Role) ";
+            string sql = "insert into Staff values (@MSNV,@CMND,@Name,@DateOfBirth,@Phone,@Role,@password) ";
             try
             {
-                SqlParameter[] sqlParameters = new SqlParameter[6];
+                SqlParameter[] sqlParameters = new SqlParameter[7];
                 sqlParameters[0] = new SqlParameter("@MSNV", SqlDbType.NVarChar) { Value = dto.MSNV };
                 sqlParameters[1] = new SqlParameter("@CMND", SqlDbType.NVarChar) { Value = dto.CMND };
                 sqlParameters[2] = new SqlParameter("@Name", SqlDbType.NVarChar) { Value = dto.Name };
                 sqlParameters[3] = new SqlParameter("@DateOfBirth", SqlDbType.NVarChar) { Value = dto.Date };
                 sqlParameters[4] = new SqlParameter("@Phone", SqlDbType.NVarChar) { Value = dto.Phone };
                 sqlParameters[5] = new SqlParameter("@Role", SqlDbType.NVarChar) { Value = dto.RoleID };
+                sqlParameters[6] = new SqlParameter("@password", SqlDbType.NVarChar) { Value = dto.Password };
                 check = conn.ExecuteInsertQuery(sql, sqlParameters);
 
             }
@@ -62,7 +63,7 @@ namespace Bus.DAO
         public List<StaffDTO> GetAll()
         {
             List<StaffDTO> list = new List<StaffDTO>();
-            string sql = "select MSNV,CMND,Name,DateOfBirth,Phone,Role from staff";
+            string sql = "select MSNV,CMND,Name,DateOfBirth,Phone,Role,Password from staff";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             DataTable dt = conn.ExecuteSelectQuery(sql, sqlParameters);
 
@@ -73,6 +74,17 @@ namespace Bus.DAO
             return list;
         }
 
+
+        public bool Login()
+        {
+            List<StaffDTO> list = new List<StaffDTO>();
+            string sql = "select Name, Password from staff where Name=@name,Password=@password";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            DataTable dt = conn.ExecuteSelectQuery(sql, sqlParameters);
+
+           
+            return true;
+        }
         private StaffDTO GetDataRow(DataRow row)
         {
             StaffDTO dto = new StaffDTO();
@@ -82,13 +94,13 @@ namespace Bus.DAO
             dto.MSNV = row["MSNV"].ToString();
             dto.Name = row["Name"].ToString();
             dto.Date = row["DateOfBirth"].ToString();
-            dto.CMND = row["CMND"].ToString();
+            dto.Password = row["Password"].ToString();
             return dto;
         }
 
         public StaffDTO SearchById(object id)
         {
-            string sql = "select MSNV,CMND,Name,DateOfBirth,Phone,Role from staff where msnv = @id";
+            string sql = "select MSNV,CMND,Name,DateOfBirth,Phone,Role,Password from staff where msnv = @id";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@id", SqlDbType.NVarChar) { Value = id };
             DataTable dt = conn.ExecuteSelectQuery(sql, sqlParameters);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bus.BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,11 +14,17 @@ namespace Bus.View
     public partial class MainForm : Form
     {
         private int childFormNumber = 0;
-
         public MainForm()
         {
             InitializeComponent();
+            staffMenu.Enabled = false;
+            ownerMenu.Enabled = false;
+            routeMenu.Enabled = false;
+            busMenu.Enabled = false;
+            schedulingMenu.Enabled = false;
+            viewMenu.Enabled = false;
         }
+        StaffBLL staff = new StaffBLL();
 
         private void ShowNewForm(object sender, EventArgs e)
         {
@@ -113,5 +120,31 @@ namespace Bus.View
             Schudeling form = new Schudeling();
             form.ShowDialog();
         }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string username = txtUserName.Text;
+            string password = txtPassword.Text;
+            var Login = staff.getAll().Where(a => a.Password.Equals(password)).Where(b => b.MSNV.Equals(username));
+            if (Login != null)
+            {
+                staffMenu.Enabled = true;
+                ownerMenu.Enabled = true;
+                routeMenu.Enabled = true;
+                busMenu.Enabled = true;
+                schedulingMenu.Enabled = true;
+                viewMenu.Enabled = true;
+                Panel.Visible = false;
+                MessageBox.Show("Login Success");
+
+            }
+            else
+            {
+                MessageBox.Show("You can''t Login in this Page");
+            }
+
+        }
+
     }
 }

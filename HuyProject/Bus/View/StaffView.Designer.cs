@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.gvStaff = new System.Windows.Forms.DataGridView();
             this.txtStaffCMND = new System.Windows.Forms.MaskedTextBox();
@@ -52,11 +53,19 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.Panel = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.Password = new System.Windows.Forms.TextBox();
+            this.Comfrimpassword = new System.Windows.Forms.TextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.txtError = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvStaff)).BeginInit();
+            this.Panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -71,6 +80,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.Panel);
             this.splitContainer1.Panel2.Controls.Add(this.txtStaffCMND);
             this.splitContainer1.Panel2.Controls.Add(this.txtStaffPhone);
             this.splitContainer1.Panel2.Controls.Add(this.txtStaffMSNV);
@@ -93,8 +103,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.label4);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
-            this.splitContainer1.Size = new System.Drawing.Size(1079, 525);
-            this.splitContainer1.SplitterDistance = 462;
+            this.splitContainer1.Size = new System.Drawing.Size(1191, 529);
+            this.splitContainer1.SplitterDistance = 436;
             this.splitContainer1.TabIndex = 0;
             // 
             // gvStaff
@@ -103,13 +113,13 @@
             this.gvStaff.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gvStaff.Location = new System.Drawing.Point(0, 0);
             this.gvStaff.Name = "gvStaff";
-            this.gvStaff.Size = new System.Drawing.Size(462, 525);
+            this.gvStaff.Size = new System.Drawing.Size(436, 529);
             this.gvStaff.TabIndex = 0;
             this.gvStaff.Click += new System.EventHandler(this.gvStaff_Click_1);
             // 
             // txtStaffCMND
             // 
-            this.txtStaffCMND.Location = new System.Drawing.Point(126, 362);
+            this.txtStaffCMND.Location = new System.Drawing.Point(113, 355);
             this.txtStaffCMND.Mask = "00000000";
             this.txtStaffCMND.Name = "txtStaffCMND";
             this.txtStaffCMND.Size = new System.Drawing.Size(228, 20);
@@ -119,7 +129,7 @@
             // 
             // txtStaffPhone
             // 
-            this.txtStaffPhone.Location = new System.Drawing.Point(126, 311);
+            this.txtStaffPhone.Location = new System.Drawing.Point(113, 304);
             this.txtStaffPhone.Mask = "(999) 000-0000";
             this.txtStaffPhone.Name = "txtStaffPhone";
             this.txtStaffPhone.Size = new System.Drawing.Size(228, 20);
@@ -127,7 +137,7 @@
             // 
             // txtStaffMSNV
             // 
-            this.txtStaffMSNV.Location = new System.Drawing.Point(126, 95);
+            this.txtStaffMSNV.Location = new System.Drawing.Point(113, 88);
             this.txtStaffMSNV.Mask = "ST0000";
             this.txtStaffMSNV.Name = "txtStaffMSNV";
             this.txtStaffMSNV.ReadOnly = true;
@@ -138,7 +148,7 @@
             // 
             this.ErrorCmnd.AutoSize = true;
             this.ErrorCmnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ErrorCmnd.Location = new System.Drawing.Point(408, 368);
+            this.ErrorCmnd.Location = new System.Drawing.Point(365, 358);
             this.ErrorCmnd.Name = "ErrorCmnd";
             this.ErrorCmnd.Size = new System.Drawing.Size(0, 16);
             this.ErrorCmnd.TabIndex = 44;
@@ -147,7 +157,7 @@
             // 
             this.ErrorPhone.AutoSize = true;
             this.ErrorPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ErrorPhone.Location = new System.Drawing.Point(408, 315);
+            this.ErrorPhone.Location = new System.Drawing.Point(365, 305);
             this.ErrorPhone.Name = "ErrorPhone";
             this.ErrorPhone.Size = new System.Drawing.Size(0, 16);
             this.ErrorPhone.TabIndex = 43;
@@ -156,7 +166,7 @@
             // 
             this.ErrorDate.AutoSize = true;
             this.ErrorDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ErrorDate.Location = new System.Drawing.Point(426, 217);
+            this.ErrorDate.Location = new System.Drawing.Point(365, 207);
             this.ErrorDate.Name = "ErrorDate";
             this.ErrorDate.Size = new System.Drawing.Size(0, 16);
             this.ErrorDate.TabIndex = 42;
@@ -165,7 +175,7 @@
             // 
             this.ErrorName.AutoSize = true;
             this.ErrorName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ErrorName.Location = new System.Drawing.Point(426, 158);
+            this.ErrorName.Location = new System.Drawing.Point(365, 148);
             this.ErrorName.Name = "ErrorName";
             this.ErrorName.Size = new System.Drawing.Size(0, 16);
             this.ErrorName.TabIndex = 41;
@@ -174,7 +184,7 @@
             // 
             this.ErrorMSNV.AutoSize = true;
             this.ErrorMSNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ErrorMSNV.Location = new System.Drawing.Point(426, 103);
+            this.ErrorMSNV.Location = new System.Drawing.Point(365, 93);
             this.ErrorMSNV.Name = "ErrorMSNV";
             this.ErrorMSNV.Size = new System.Drawing.Size(0, 16);
             this.ErrorMSNV.TabIndex = 40;
@@ -191,7 +201,7 @@
             // 
             // btnStaffNew
             // 
-            this.btnStaffNew.Location = new System.Drawing.Point(65, 470);
+            this.btnStaffNew.Location = new System.Drawing.Point(52, 463);
             this.btnStaffNew.Name = "btnStaffNew";
             this.btnStaffNew.Size = new System.Drawing.Size(75, 27);
             this.btnStaffNew.TabIndex = 38;
@@ -201,7 +211,7 @@
             // 
             // btnStaffDelete
             // 
-            this.btnStaffDelete.Location = new System.Drawing.Point(429, 470);
+            this.btnStaffDelete.Location = new System.Drawing.Point(416, 463);
             this.btnStaffDelete.Name = "btnStaffDelete";
             this.btnStaffDelete.Size = new System.Drawing.Size(75, 27);
             this.btnStaffDelete.TabIndex = 37;
@@ -211,7 +221,7 @@
             // 
             // btnStaffUpdate
             // 
-            this.btnStaffUpdate.Location = new System.Drawing.Point(303, 470);
+            this.btnStaffUpdate.Location = new System.Drawing.Point(290, 463);
             this.btnStaffUpdate.Name = "btnStaffUpdate";
             this.btnStaffUpdate.Size = new System.Drawing.Size(75, 27);
             this.btnStaffUpdate.TabIndex = 36;
@@ -221,7 +231,7 @@
             // 
             // btnStaffAdd
             // 
-            this.btnStaffAdd.Location = new System.Drawing.Point(182, 470);
+            this.btnStaffAdd.Location = new System.Drawing.Point(169, 463);
             this.btnStaffAdd.Name = "btnStaffAdd";
             this.btnStaffAdd.Size = new System.Drawing.Size(75, 27);
             this.btnStaffAdd.TabIndex = 35;
@@ -231,17 +241,19 @@
             // 
             // cbStaffRole
             // 
+            this.cbStaffRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStaffRole.FormattingEnabled = true;
-            this.cbStaffRole.Location = new System.Drawing.Point(126, 265);
+            this.cbStaffRole.Location = new System.Drawing.Point(113, 258);
             this.cbStaffRole.Name = "cbStaffRole";
             this.cbStaffRole.Size = new System.Drawing.Size(228, 21);
             this.cbStaffRole.TabIndex = 34;
+            this.cbStaffRole.SelectedIndexChanged += new System.EventHandler(this.cbStaffRole_SelectedIndexChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(70, 265);
+            this.label7.Location = new System.Drawing.Point(57, 258);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(37, 16);
             this.label7.TabIndex = 33;
@@ -251,7 +263,7 @@
             // 
             this.dtpStaffDateOfBirth.CustomFormat = "yyyy-MM-dd ";
             this.dtpStaffDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpStaffDateOfBirth.Location = new System.Drawing.Point(126, 213);
+            this.dtpStaffDateOfBirth.Location = new System.Drawing.Point(113, 206);
             this.dtpStaffDateOfBirth.Name = "dtpStaffDateOfBirth";
             this.dtpStaffDateOfBirth.Size = new System.Drawing.Size(228, 20);
             this.dtpStaffDateOfBirth.TabIndex = 32;
@@ -260,7 +272,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(25, 213);
+            this.label6.Location = new System.Drawing.Point(12, 206);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(82, 16);
             this.label6.TabIndex = 31;
@@ -268,7 +280,7 @@
             // 
             // txtStaffName
             // 
-            this.txtStaffName.Location = new System.Drawing.Point(126, 154);
+            this.txtStaffName.Location = new System.Drawing.Point(113, 147);
             this.txtStaffName.Name = "txtStaffName";
             this.txtStaffName.Size = new System.Drawing.Size(228, 20);
             this.txtStaffName.TabIndex = 30;
@@ -277,7 +289,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(64, 311);
+            this.label5.Location = new System.Drawing.Point(51, 304);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 16);
             this.label5.TabIndex = 29;
@@ -287,7 +299,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(62, 154);
+            this.label4.Location = new System.Drawing.Point(49, 147);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(45, 16);
             this.label4.TabIndex = 28;
@@ -297,7 +309,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(63, 362);
+            this.label3.Location = new System.Drawing.Point(50, 355);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 16);
             this.label3.TabIndex = 27;
@@ -307,17 +319,76 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(60, 100);
+            this.label2.Location = new System.Drawing.Point(47, 93);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 16);
             this.label2.TabIndex = 26;
             this.label2.Text = "MSNV";
             // 
+            // Panel
+            // 
+            this.Panel.Controls.Add(this.txtError);
+            this.Panel.Controls.Add(this.Comfrimpassword);
+            this.Panel.Controls.Add(this.Password);
+            this.Panel.Controls.Add(this.label9);
+            this.Panel.Controls.Add(this.label1);
+            this.Panel.Location = new System.Drawing.Point(416, 88);
+            this.Panel.Name = "Panel";
+            this.Panel.Size = new System.Drawing.Size(323, 287);
+            this.Panel.TabIndex = 48;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(58, 45);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Password :";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(18, 106);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(99, 13);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Comfirm Password :";
+            // 
+            // Password
+            // 
+            this.Password.Location = new System.Drawing.Point(132, 45);
+            this.Password.Name = "Password";
+            this.Password.PasswordChar = '*';
+            this.Password.Size = new System.Drawing.Size(174, 20);
+            this.Password.TabIndex = 2;
+            // 
+            // Comfrimpassword
+            // 
+            this.Comfrimpassword.Location = new System.Drawing.Point(132, 106);
+            this.Comfrimpassword.Name = "Comfrimpassword";
+            this.Comfrimpassword.PasswordChar = '*';
+            this.Comfrimpassword.Size = new System.Drawing.Size(174, 20);
+            this.Comfrimpassword.TabIndex = 3;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 700;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // txtError
+            // 
+            this.txtError.AutoSize = true;
+            this.txtError.Location = new System.Drawing.Point(47, 186);
+            this.txtError.Name = "txtError";
+            this.txtError.Size = new System.Drawing.Size(0, 13);
+            this.txtError.TabIndex = 4;
+            // 
             // StaffView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1079, 525);
+            this.ClientSize = new System.Drawing.Size(1191, 529);
             this.Controls.Add(this.splitContainer1);
             this.Name = "StaffView";
             this.Text = "StaffView";
@@ -327,6 +398,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gvStaff)).EndInit();
+            this.Panel.ResumeLayout(false);
+            this.Panel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -357,5 +430,12 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel Panel;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox Comfrimpassword;
+        private System.Windows.Forms.TextBox Password;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label txtError;
     }
 }
