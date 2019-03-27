@@ -137,7 +137,6 @@ namespace Bus.View
                 viewMenu.Enabled = true;
                 Panel.Visible = false;
                 MessageBox.Show("Login Success");
-
             }
             else
             {
@@ -145,6 +144,5 @@ namespace Bus.View
             }
 
         }
-
     }
 }

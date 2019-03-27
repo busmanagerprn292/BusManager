@@ -73,7 +73,20 @@ namespace Bus.DAO
             }
             return list;
         }
+        public List<StaffDTO> GetByName(string name)
+        {
+            List<StaffDTO> list = new List<StaffDTO>();
+            string sql = "select MSNV,CMND,Name,DateOfBirth,Phone,Role,Password from staff where name LIKE"+ "%" +"@name" +"%";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@name", SqlDbType.NVarChar) { Value = name };
+            DataTable dt = conn.ExecuteSelectQuery(sql, sqlParameters);
 
+            foreach (DataRow i in dt.Rows)
+            {
+                list.Add(GetDataRow(i));
+            }
+            return list;
+        }
 
         public bool Login()
         {

@@ -57,7 +57,6 @@ namespace Bus.View
             //string key = ((KeyValuePair<string, string>)comboBox1.SelectedItem).Key;
             //string value = ((KeyValuePair<string, string>)comboBox1.SelectedItem).Value;
         }
-
         private void txtStaffPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
@@ -65,7 +64,6 @@ namespace Bus.View
                 e.Handled = true;
             }
         }
-
         private string CheckValidate()
         {
             string error = "";
@@ -113,7 +111,6 @@ namespace Bus.View
 
             return error;
         }
-
         private void btnStaffAdd_Click(object sender, EventArgs e)
         {
             string check = CheckValidate();
@@ -154,8 +151,6 @@ namespace Bus.View
                 }
             }
         }
-
-
         private void btnStaffNew_Click_1(object sender, EventArgs e)
         {
             txtStaffMSNV.Text = "";
@@ -164,7 +159,6 @@ namespace Bus.View
             txtStaffPhone.Text = "";
             cbStaffRole.SelectedIndex = 0;
         }
-
         private void btnStaffUpdate_Click_1(object sender, EventArgs e)
         {
             if (CheckValidate().Equals(""))
@@ -188,7 +182,6 @@ namespace Bus.View
                 }
             }
         }
-
         private void btnStaffDelete_Click_1(object sender, EventArgs e)
         {
             if (bll.DeleteStaff(txtStaffMSNV.Text))
@@ -198,7 +191,6 @@ namespace Bus.View
             }
             else { MessageBox.Show("This Staff is doing"); }
         }
-
         private void txtStaffCMND_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
@@ -206,7 +198,6 @@ namespace Bus.View
                 e.Handled = true;
             }
         }
-
         private void gvStaff_Click_1(object sender, EventArgs e)
         {
             if (gvStaff.SelectedRows.Count > 0)
@@ -225,7 +216,6 @@ namespace Bus.View
                 }
             }
         }
-
         private void cbStaffRole_SelectedIndexChanged(object sender, EventArgs e)
         {
             string value = ((KeyValuePair<string, string>)cbStaffRole.SelectedItem).Value;
@@ -239,17 +229,17 @@ namespace Bus.View
                 timer1.Stop();
                 Panel.Visible = false;
                 Password.Text = "";
+                btnStaffAdd.Enabled = true;
             }
         }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (Password.Text.Equals(Comfrimpassword.Text)&&Password.Text.Length>8)
+            if (Password.Text.Equals(Comfrimpassword.Text) && Password.Text.Length > 8)
             {
                 btnStaffAdd.Enabled = true;
                 txtError.Text = "";
             }
-            else if (Password.Text.Length< 8||Comfrimpassword.Text.Length<8)
+            else if (Password.Text.Length < 8 || Comfrimpassword.Text.Length < 8)
             {
                 btnStaffAdd.Enabled = false;
                 txtError.Text = " Password has more 8 charater";
@@ -257,8 +247,15 @@ namespace Bus.View
             else
             {
                 btnStaffAdd.Enabled = false;
-                txtError.Text= "Please check your password";
+                txtError.Text = "Please check your password";
             }
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var ListStaff = bll.getAll().Where(a => a.Name.Contains(txtStaffName.Text)).ToList();
+            gvStaff.Refresh();
+            gvStaff.DataSource = ListStaff;
+            MessageBox.Show(ListStaff.Count().ToString());
         }
     }
 }

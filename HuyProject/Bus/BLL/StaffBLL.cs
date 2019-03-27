@@ -22,6 +22,11 @@ namespace Bus.BLL
         {
             return Sdao.GetAll();
         }
+        public List<StaffDTO> getByName(string name)
+        {
+            return Sdao.GetByName(name);
+        }
+
         public List<RoleDTO> getAllR()
         {
             return Rdao.GetAll();

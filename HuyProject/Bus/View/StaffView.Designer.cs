@@ -31,6 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.gvStaff = new System.Windows.Forms.DataGridView();
+            this.Panel = new System.Windows.Forms.Panel();
+            this.txtError = new System.Windows.Forms.Label();
+            this.Comfrimpassword = new System.Windows.Forms.TextBox();
+            this.Password = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.txtStaffCMND = new System.Windows.Forms.MaskedTextBox();
             this.txtStaffPhone = new System.Windows.Forms.MaskedTextBox();
             this.txtStaffMSNV = new System.Windows.Forms.MaskedTextBox();
@@ -53,13 +59,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.Panel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.Password = new System.Windows.Forms.TextBox();
-            this.Comfrimpassword = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.txtError = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -80,6 +81,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.button1);
             this.splitContainer1.Panel2.Controls.Add(this.Panel);
             this.splitContainer1.Panel2.Controls.Add(this.txtStaffCMND);
             this.splitContainer1.Panel2.Controls.Add(this.txtStaffPhone);
@@ -116,6 +118,60 @@
             this.gvStaff.Size = new System.Drawing.Size(436, 529);
             this.gvStaff.TabIndex = 0;
             this.gvStaff.Click += new System.EventHandler(this.gvStaff_Click_1);
+            // 
+            // Panel
+            // 
+            this.Panel.Controls.Add(this.txtError);
+            this.Panel.Controls.Add(this.Comfrimpassword);
+            this.Panel.Controls.Add(this.Password);
+            this.Panel.Controls.Add(this.label9);
+            this.Panel.Controls.Add(this.label1);
+            this.Panel.Location = new System.Drawing.Point(416, 227);
+            this.Panel.Name = "Panel";
+            this.Panel.Size = new System.Drawing.Size(323, 187);
+            this.Panel.TabIndex = 48;
+            // 
+            // txtError
+            // 
+            this.txtError.AutoSize = true;
+            this.txtError.Location = new System.Drawing.Point(101, 149);
+            this.txtError.Name = "txtError";
+            this.txtError.Size = new System.Drawing.Size(0, 13);
+            this.txtError.TabIndex = 4;
+            // 
+            // Comfrimpassword
+            // 
+            this.Comfrimpassword.Location = new System.Drawing.Point(132, 106);
+            this.Comfrimpassword.Name = "Comfrimpassword";
+            this.Comfrimpassword.PasswordChar = '*';
+            this.Comfrimpassword.Size = new System.Drawing.Size(174, 20);
+            this.Comfrimpassword.TabIndex = 3;
+            // 
+            // Password
+            // 
+            this.Password.Location = new System.Drawing.Point(132, 45);
+            this.Password.Name = "Password";
+            this.Password.PasswordChar = '*';
+            this.Password.Size = new System.Drawing.Size(174, 20);
+            this.Password.TabIndex = 2;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(18, 106);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(99, 13);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Comfirm Password :";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(58, 45);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Password :";
             // 
             // txtStaffCMND
             // 
@@ -325,64 +381,20 @@
             this.label2.TabIndex = 26;
             this.label2.Text = "MSNV";
             // 
-            // Panel
-            // 
-            this.Panel.Controls.Add(this.txtError);
-            this.Panel.Controls.Add(this.Comfrimpassword);
-            this.Panel.Controls.Add(this.Password);
-            this.Panel.Controls.Add(this.label9);
-            this.Panel.Controls.Add(this.label1);
-            this.Panel.Location = new System.Drawing.Point(416, 88);
-            this.Panel.Name = "Panel";
-            this.Panel.Size = new System.Drawing.Size(323, 287);
-            this.Panel.TabIndex = 48;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(58, 45);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Password :";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(18, 106);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(99, 13);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "Comfirm Password :";
-            // 
-            // Password
-            // 
-            this.Password.Location = new System.Drawing.Point(132, 45);
-            this.Password.Name = "Password";
-            this.Password.PasswordChar = '*';
-            this.Password.Size = new System.Drawing.Size(174, 20);
-            this.Password.TabIndex = 2;
-            // 
-            // Comfrimpassword
-            // 
-            this.Comfrimpassword.Location = new System.Drawing.Point(132, 106);
-            this.Comfrimpassword.Name = "Comfrimpassword";
-            this.Comfrimpassword.PasswordChar = '*';
-            this.Comfrimpassword.Size = new System.Drawing.Size(174, 20);
-            this.Comfrimpassword.TabIndex = 3;
-            // 
             // timer1
             // 
             this.timer1.Interval = 700;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // txtError
+            // button1
             // 
-            this.txtError.AutoSize = true;
-            this.txtError.Location = new System.Drawing.Point(47, 186);
-            this.txtError.Name = "txtError";
-            this.txtError.Size = new System.Drawing.Size(0, 13);
-            this.txtError.TabIndex = 4;
+            this.button1.Location = new System.Drawing.Point(416, 145);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(124, 23);
+            this.button1.TabIndex = 49;
+            this.button1.Text = "Search Staff";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // StaffView
             // 
@@ -437,5 +449,6 @@
         private System.Windows.Forms.TextBox Password;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label txtError;
+        private System.Windows.Forms.Button button1;
     }
 }
