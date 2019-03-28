@@ -61,8 +61,8 @@ namespace Bus.View
 
         private void ScheduleDetailOfBus_Load(object sender, EventArgs e)
         {
-            listCasher.DataSource = main_staff_bll.getAll();
-            listDriver.DataSource = main_staff_bll.getAll();
+            listCasher.DataSource = main_staff_bll.getAll().Where(a => a.RoleID.Equals("SC")).ToList(); 
+            listDriver.DataSource = main_staff_bll.getAll().Where(a => a.RoleID.Equals("SD")).ToList(); 
             listDriver.DisplayMember = "Name";
             listCasher.DisplayMember = "Name";
             listCasher.ValueMember = "MSNV";

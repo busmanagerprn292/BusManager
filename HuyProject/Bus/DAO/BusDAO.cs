@@ -27,9 +27,10 @@ namespace Bus.DAO
             dto.DateRegistration = DateTime.Parse(row["DateRegistration"].ToString());
             return dto;
         }
+
         public List<BusDTO> GetAll()
         {
-            string query = string.Format("select * from Bus");
+            string query = "select * from Bus";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             DataTable dt = conn.ExecuteSelectQuery(query, sqlParameters);
             List<BusDTO> list = new List<BusDTO>();
@@ -204,7 +205,6 @@ namespace Bus.DAO
         {
             string query = "Insert into BusStation values(@busId,@MSNVDRIVER,@DepartureTime,@TimeBack,@MSNVCAST,@Status)";
             SqlParameter[] sqlParameters = new SqlParameter[6];
-            //sqlParameters[0] = new SqlParameter("@id", SqlDbType.   ) { Value = dto.Id };
             sqlParameters[0] = new SqlParameter("@busId", SqlDbType.NVarChar) { Value = dto.BusID };
             sqlParameters[1] = new SqlParameter("@MSNVDRIVER", SqlDbType.NVarChar) { Value = dto.MSNVDRIVER };
             sqlParameters[2] = new SqlParameter("@DepartureTime", SqlDbType.NVarChar) { Value = dto.DepartureTime};

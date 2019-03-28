@@ -26,6 +26,7 @@ namespace Bus.View
             LoadDataGridView();
 
         }
+
         public void test()
         {
             DateTime Star = Convert.ToDateTime(dateTimePicker1.Text);
@@ -35,6 +36,7 @@ namespace Bus.View
             MessageBox.Show(a.ToString());
 
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             if (checkDateAccess())
@@ -66,6 +68,7 @@ namespace Bus.View
 
             }
         }
+
         public void LoadAllBus()
         {
             var list = bus.GetBusList();
@@ -78,11 +81,12 @@ namespace Bus.View
             CbBSX.DisplayMember = "Value";
             CbBSX.ValueMember = "Key";
         }
+
         public void LoadAllStaff()
         {
-            var list = Staff.getAll();
-            var listCs = list.Where(a => a.RoleID.Equals("SC"));
-            var listCd = list.Where(b => b.RoleID.Equals("SD"));
+            var listStaff = Staff.getAll();
+            var listCs = listStaff.Where(a => a.RoleID.Equals("SC"));
+            var listCd = listStaff.Where(b => b.RoleID.Equals("SD"));
             Dictionary<string, string> comboCasher = new Dictionary<string, string>();
             foreach (var item in listCs)
             {
@@ -102,6 +106,7 @@ namespace Bus.View
             cbDriver.ValueMember = "Key";
 
         }
+
         private void CbBSX_SelectedIndexChanged(object sender, EventArgs e)
         {
             string key = ((KeyValuePair<string, string>)CbBSX.SelectedItem).Key;
@@ -109,21 +114,21 @@ namespace Bus.View
             txtOwner.Text = index[0];
             txtDateRegis.Text = index[1];
         }
+
         private void cbCasher_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtRole.Text = "Casher";
-            //string key = ((KeyValuePair<string, string>)cbCasher.SelectedItem).Key;
-            //string[] index = key.Split('.');
-            //txtName.Text = index[0];
-            //txtPhone.Text = index[1];
-            //txtDateOfBirth.Text = index[2];
+            string key = ((KeyValuePair<string, string>)cbCasher.SelectedItem).Key;
+            string[] index = key.Split('.');
+            txtName.Text = index[0];
+            txtPhone.Text = index[1];
+            txtDateOfBirth.Text = index[2];
         }
 
         private void cbDriver_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtRole.Text = "Driver";
-
-            string key = ((KeyValuePair<string, string>)cbCasher.SelectedItem).Key;
+            string key = ((KeyValuePair<string, string>)cbDriver.SelectedItem).Key;
             string[] index = key.Split('.');
             txtName.Text = index[0];
             txtPhone.Text = index[1];
@@ -149,7 +154,6 @@ namespace Bus.View
                 DateReturnPick = DateGoPick.AddHours(3);
                 dateTimePicker2.Text = DateReturnPick.ToString();
             }
-
         }
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
@@ -201,9 +205,7 @@ namespace Bus.View
         public void LoadDataGridView()
         {
             tblViewBus.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            tblViewBus.SelectionMode =
-            DataGridViewSelectionMode.FullRowSelect;
-
+            tblViewBus.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             list = dao.GetAllBus();
             var bxs = bus.GetBusList();
@@ -236,10 +238,10 @@ namespace Bus.View
             }
         }
 
-
         int count = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
+           
             for (int i = 0; i < tblViewBus.Rows.Count; i++)
             {
                 DateTime Now = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
@@ -249,8 +251,6 @@ namespace Bus.View
                 if ((Now - Back).TotalMinutes >0)
                 {
                     tblViewBus[7, i].Value = Enum.GetName(typeof(Change), 3).ToString();// ready
-                   
-
                     string a = Convert.ToString(tblViewBus.Rows[i].Cells["status"].Value);
                     if (a.Equals("finished")==false)
                     {
@@ -282,8 +282,6 @@ namespace Bus.View
             }
         }
 
-   
-
         private void button3_Click(object sender, EventArgs e)
         {
             if (tblViewBus.SelectedCells.Count > 0)
@@ -295,6 +293,32 @@ namespace Bus.View
                     MessageBox.Show("success");
                     LoadDataGridView();
                 }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            string Vlue = ((KeyValuePair<string, string>)CbBSX.SelectedItem).Value;
+            var list = bus.GetBusList().Where(a => a.BSX.Equals(Vlue)).ToList();
+            tblViewBus.DataSource = list;
+            tblViewBus.Refresh();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            LoadDataGridView();
+            tblViewBus.Refresh();
+            timer1.Start();
+        }
+
+        private void tblViewBus_Click(object sender, EventArgs e)
+        {
+            if (tblViewBus.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = tblViewBus.SelectedCells[0].RowIndex;
+                int id = list[selectedrowindex].ID;
+                
             }
         }
     }

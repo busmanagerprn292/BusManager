@@ -30,6 +30,7 @@ namespace Bus.View
             errorProvider3.Clear();
             errorProvider4.Clear();
             errorProvider5.Clear();
+            errorProvider6.Clear();
             if (String.IsNullOrWhiteSpace(txtId.Text) || txtId.Text.Split(' ')[0].Length != 6)
             {
                 errorProvider1.SetError(txtId, "format OWxxxx 'x' is digit");

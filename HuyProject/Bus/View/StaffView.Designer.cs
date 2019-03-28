@@ -31,10 +31,11 @@
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.gvStaff = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             this.Panel = new System.Windows.Forms.Panel();
             this.txtError = new System.Windows.Forms.Label();
             this.Comfrimpassword = new System.Windows.Forms.TextBox();
-            this.Password = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtStaffCMND = new System.Windows.Forms.MaskedTextBox();
@@ -60,7 +61,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -119,11 +119,21 @@
             this.gvStaff.TabIndex = 0;
             this.gvStaff.Click += new System.EventHandler(this.gvStaff_Click_1);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(416, 145);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(124, 23);
+            this.button1.TabIndex = 49;
+            this.button1.Text = "Search Staff";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Panel
             // 
             this.Panel.Controls.Add(this.txtError);
             this.Panel.Controls.Add(this.Comfrimpassword);
-            this.Panel.Controls.Add(this.Password);
+            this.Panel.Controls.Add(this.txtPassword);
             this.Panel.Controls.Add(this.label9);
             this.Panel.Controls.Add(this.label1);
             this.Panel.Location = new System.Drawing.Point(416, 227);
@@ -147,13 +157,13 @@
             this.Comfrimpassword.Size = new System.Drawing.Size(174, 20);
             this.Comfrimpassword.TabIndex = 3;
             // 
-            // Password
+            // txtPassword
             // 
-            this.Password.Location = new System.Drawing.Point(132, 45);
-            this.Password.Name = "Password";
-            this.Password.PasswordChar = '*';
-            this.Password.Size = new System.Drawing.Size(174, 20);
-            this.Password.TabIndex = 2;
+            this.txtPassword.Location = new System.Drawing.Point(132, 45);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(174, 20);
+            this.txtPassword.TabIndex = 2;
             // 
             // label9
             // 
@@ -323,6 +333,7 @@
             this.dtpStaffDateOfBirth.Name = "dtpStaffDateOfBirth";
             this.dtpStaffDateOfBirth.Size = new System.Drawing.Size(228, 20);
             this.dtpStaffDateOfBirth.TabIndex = 32;
+            this.dtpStaffDateOfBirth.Value = new System.DateTime(2000, 2, 2, 0, 0, 0, 0);
             // 
             // label6
             // 
@@ -386,16 +397,6 @@
             this.timer1.Interval = 700;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(416, 145);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(124, 23);
-            this.button1.TabIndex = 49;
-            this.button1.Text = "Search Staff";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // StaffView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -446,7 +447,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox Comfrimpassword;
-        private System.Windows.Forms.TextBox Password;
+        private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label txtError;
         private System.Windows.Forms.Button button1;

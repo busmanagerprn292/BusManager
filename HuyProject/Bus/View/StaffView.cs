@@ -37,7 +37,7 @@ namespace Bus.View
             var a = bll.getAll();
             string ID = a.ElementAt(a.Count - 1).MSNV;
             CreateID(ID);
-            gvStaff.Columns.Remove("password");
+            
         }
         public void CreateID(string id)
         {
@@ -108,6 +108,20 @@ namespace Bus.View
                 ErrorName.Text = "";
                 error += "";
             }
+            DateTime Today = DateTime.Now;
+            DateTime DateGoPick = Convert.ToDateTime(dtpStaffDateOfBirth.Text);
+            if ((Today-DateGoPick).TotalDays<6570)
+            {
+                ErrorDate.ForeColor = Color.Red;
+                ErrorDate.Text = "Need more than 18 old";
+                error += "Error";
+            }
+            else
+            {
+                ErrorDate.ForeColor = Color.White;
+                ErrorDate.Text = "";
+                error += "";
+            }
 
             return error;
         }
@@ -116,9 +130,9 @@ namespace Bus.View
             string check = CheckValidate();
             if (check.Equals(""))
             {
-                if (Number < 10)
+                if (Number < 9)
                 {
-                    if (bll.InsertStaff(new StaffDTO()
+                    if (bll.InsertStaff(new StaffDTO() 
                     {
                         RoleID = ((KeyValuePair<string, string>)cbStaffRole.SelectedItem).Key,
                         CMND = txtStaffCMND.Text,
@@ -126,7 +140,7 @@ namespace Bus.View
                         MSNV = "ST000" + ++Number,
                         Name = txtStaffName.Text,
                         Phone = txtStaffPhone.Text,
-                        Password = Password.Text
+                        Password = txtPassword.Text
                     }))
                     {
                         MessageBox.Show("Success");
@@ -134,7 +148,7 @@ namespace Bus.View
                     }
                 }
                 else
-                {
+                { 
                     if (bll.InsertStaff(new StaffDTO()
                     {
                         RoleID = ((KeyValuePair<string, string>)cbStaffRole.SelectedItem).Key,
@@ -143,6 +157,7 @@ namespace Bus.View
                         MSNV = "ST00" + ++Number,
                         Name = txtStaffName.Text,
                         Phone = txtStaffPhone.Text
+                        ,Password = txtPassword.Text
                     }))
                     {
                         MessageBox.Show("Success");
@@ -171,6 +186,7 @@ namespace Bus.View
                     MSNV = txtStaffMSNV.Text,
                     Name = txtStaffName.Text,
                     Phone = txtStaffPhone.Text
+                    ,Password = txtPassword.Text
                 }))
                 {
                     MessageBox.Show("Success");
@@ -228,18 +244,18 @@ namespace Bus.View
             {
                 timer1.Stop();
                 Panel.Visible = false;
-                Password.Text = "";
+                txtPassword.Text = "";
                 btnStaffAdd.Enabled = true;
             }
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (Password.Text.Equals(Comfrimpassword.Text) && Password.Text.Length > 8)
+            if (txtPassword.Text.Equals(Comfrimpassword.Text) && txtPassword.Text.Length > 8)
             {
                 btnStaffAdd.Enabled = true;
                 txtError.Text = "";
             }
-            else if (Password.Text.Length < 8 || Comfrimpassword.Text.Length < 8)
+            else if (txtPassword.Text.Length < 8 || Comfrimpassword.Text.Length < 8)
             {
                 btnStaffAdd.Enabled = false;
                 txtError.Text = " Password has more 8 charater";
@@ -255,7 +271,6 @@ namespace Bus.View
             var ListStaff = bll.getAll().Where(a => a.Name.Contains(txtStaffName.Text)).ToList();
             gvStaff.Refresh();
             gvStaff.DataSource = ListStaff;
-            MessageBox.Show(ListStaff.Count().ToString());
         }
     }
 }

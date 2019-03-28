@@ -126,8 +126,8 @@ namespace Bus.View
         {
             string username = txtUserName.Text;
             string password = txtPassword.Text;
-            var Login = staff.getAll().Where(a => a.Password.Equals(password)).Where(b => b.MSNV.Equals(username));
-            if (Login != null)
+            
+            if (staff.Login(username,password))
             {
                 staffMenu.Enabled = true;
                 ownerMenu.Enabled = true;

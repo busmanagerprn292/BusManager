@@ -60,6 +60,31 @@ namespace Bus.DAO
             return check;
         }
 
+        public bool Login(string username, string password)
+        {
+            string sql = "select role  from staff where MSNV = @MSNV and password = @password and role='SA'";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@MSNV", SqlDbType.NVarChar) { Value = username };
+            sqlParameters[1] = new SqlParameter("@password", SqlDbType.NVarChar) { Value = password };
+            try
+            {
+                DataTable dt = conn.ExecuteSelectQuery(sql, sqlParameters);
+                if (dt.Rows.Count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
+        }
+
         public List<StaffDTO> GetAll()
         {
             List<StaffDTO> list = new List<StaffDTO>();
@@ -76,7 +101,7 @@ namespace Bus.DAO
         public List<StaffDTO> GetByName(string name)
         {
             List<StaffDTO> list = new List<StaffDTO>();
-            string sql = "select MSNV,CMND,Name,DateOfBirth,Phone,Role,Password from staff where name LIKE"+ "%" +"@name" +"%";
+            string sql = "select MSNV,CMND,Name,DateOfBirth,Phone,Role,Password from staff where name LIKE" + "%" + "@name" + "%";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@name", SqlDbType.NVarChar) { Value = name };
             DataTable dt = conn.ExecuteSelectQuery(sql, sqlParameters);
@@ -88,16 +113,6 @@ namespace Bus.DAO
             return list;
         }
 
-        public bool Login()
-        {
-            List<StaffDTO> list = new List<StaffDTO>();
-            string sql = "select Name, Password from staff where Name=@name,Password=@password";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
-            DataTable dt = conn.ExecuteSelectQuery(sql, sqlParameters);
-
-           
-            return true;
-        }
         private StaffDTO GetDataRow(DataRow row)
         {
             StaffDTO dto = new StaffDTO();
@@ -128,8 +143,8 @@ namespace Bus.DAO
         public bool Update(StaffDTO dto)
         {
             bool check = true;
-            string sql = "update staff  set  CMND=@cmnd,Name=@name,DateOfBirth=@date,Phone=@phone,Role=@role where msnv = @msnv";
-            SqlParameter[] sqlParameters = new SqlParameter[6];
+            string sql = "update staff  set  CMND=@cmnd,Name=@name,DateOfBirth=@date,Phone=@phone,Role=@role,password=@password where msnv = @msnv";
+            SqlParameter[] sqlParameters = new SqlParameter[7];
 
             sqlParameters[0] = new SqlParameter("@cmnd", SqlDbType.NVarChar) { Value = dto.CMND };
             sqlParameters[1] = new SqlParameter("@name", SqlDbType.NVarChar) { Value = dto.Name };
@@ -137,6 +152,8 @@ namespace Bus.DAO
             sqlParameters[3] = new SqlParameter("@phone", SqlDbType.NVarChar) { Value = dto.Phone };
             sqlParameters[4] = new SqlParameter("@role", SqlDbType.NVarChar) { Value = dto.RoleID };
             sqlParameters[5] = new SqlParameter("@msnv", SqlDbType.NVarChar) { Value = dto.MSNV };
+            sqlParameters[6] = new SqlParameter("@password", SqlDbType.NVarChar) { Value = dto.Password };
+
             try
             {
                 check = conn.ExecuteUpdateQuery(sql, sqlParameters);

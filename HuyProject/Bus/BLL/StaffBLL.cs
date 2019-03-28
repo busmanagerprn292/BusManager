@@ -49,5 +49,9 @@ namespace Bus.BLL
         {
             return Sdao.SearchById(mssv);
         }
+        public bool Login(string username , string password)
+        {
+            return Sdao.Login(username, password);
+        }
     }
 }
